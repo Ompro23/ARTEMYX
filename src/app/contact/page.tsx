@@ -53,9 +53,7 @@ export function BackgroundBeamsDemo() {
                 <h1 className="relative z-10 text-4xl sm:text-5xl md:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 text-center font-sans font-bold">
                     Contact Us
                 </h1>
-                <p className="text-neutral-500 max-w-lg mx-auto my-2 text-sm text-center relative z-10">
-                    Have any questions or concerns? We&apos;re always ready to help! Send us an email and we&apos;ll get back to you as soon as possible.
-                </p>
+               
                 <form onSubmit={handleSubmit} className="relative z-10 mt-4">
                     <input
                         type="email"
