@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 
-export function BackgroundBeamsDemo() {
+const BackgroundBeamsDemo: React.FC = () => {
     const [email, setEmail] = useState("");
     const [query, setQuery] = useState("");
 
