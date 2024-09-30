@@ -54,7 +54,7 @@ export function BackgroundBeamsDemo() {
                     Contact Us
                 </h1>
                 <p className="text-neutral-500 max-w-lg mx-auto my-2 text-sm text-center relative z-10">
-                    Have any questions or concerns? We're always ready to help! Send us an email and we'll get back to you as soon as possible.
+                    Have any questions or concerns? We&apos;re always ready to help! Send us an email and we&apos;ll get back to you as soon as possible.
                 </p>
                 <form onSubmit={handleSubmit} className="relative z-10 mt-4">
                     <input
