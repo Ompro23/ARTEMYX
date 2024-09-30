@@ -7,33 +7,33 @@ function Footer() {
                 <div className='p-4'>
                     <h3 className='text-white mb-4'>Company</h3>
                     <ul>
-                        <li><a href='#' className='hover:text-white'>About Us</a></li>
-                        <li><a href='#' className='hover:text-white'>Careers</a></li>
-                        <li><a href='#' className='hover:text-white'>Press</a></li>
+                        <li><a href='https://example.com/about' className='hover:text-white'>About Us</a></li>
+                        <li><a href='https://example.com/careers' className='hover:text-white'>Careers</a></li>
+                        <li><a href='https://example.com/press' className='hover:text-white'>Press</a></li>
                     </ul>
                 </div>
                 <div className='p-4'>
                     <h3 className='text-white mb-4'>Support</h3>
                     <ul>
-                        <li><a href='#' className='hover:text-white'>Help Center</a></li>
-                        <li><a href='#' className='hover:text-white'>Contact Us</a></li>
-                        <li><a href='#' className='hover:text-white'>FAQs</a></li>
+                        <li><a href='https://example.com/help' className='hover:text-white'>Help Center</a></li>
+                        <li><a href='https://example.com/contact' className='hover:text-white'>Contact Us</a></li>
+                        <li><a href='https://example.com/faqs' className='hover:text-white'>FAQs</a></li>
                     </ul>
                 </div>
                 <div className='p-4'>
                     <h3 className='text-white mb-4'>Legal</h3>
                     <ul>
-                        <li><a href='#' className='hover:text-white'>Privacy Policy</a></li>
-                        <li><a href='#' className='hover:text-white'>Terms of Service</a></li>
-                        <li><a href='#' className='hover:text-white'>Cookie Policy</a></li>
+                        <li><a href='https://example.com/privacy' className='hover:text-white'>Privacy Policy</a></li>
+                        <li><a href='https://example.com/terms' className='hover:text-white'>Terms of Service</a></li>
+                        <li><a href='https://example.com/cookies' className='hover:text-white'>Cookie Policy</a></li>
                     </ul>
                 </div>
                 <div className='p-4'>
                     <h3 className='text-white mb-4'>Follow Us</h3>
                     <ul className='flex space-x-4'>
-                        <li><a href='#' className='hover:text-white'>Facebook</a></li>
-                        <li><a href='#' className='hover:text-white'>Twitter</a></li>
-                        <li><a href='#' className='hover:text-white'>Instagram</a></li>
+                        <li><a href='https://example.com/facebook' className='hover:text-white'>Facebook</a></li>
+                        <li><a href='https://example.com/twitter' className='hover:text-white'>Twitter</a></li>
+                        <li><a href='https://example.com/instagram' className='hover:text-white'>Instagram</a></li>
                     </ul>
                 </div>
             </div>
