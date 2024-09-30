@@ -1,0 +1,79 @@
+
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Basic White T-Shirt",
+            "description": "A plain white t-shirt made from 100% cotton.",
+            "link": "https://www.snapchat.com/lens/f946a682b3504bccbee20ad7c0db7ef3?sender_web_id=0937c856-1ffe-46d9-9df6-a481248f4998&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/itachi/1.png",
+            "buylink": "#",
+            "inStock": true,
+            "image": "https://drive.google.com/file/d/1l8lMgIejM_iUebRLW1XgkiSoafkgTkJY/view?usp=drive_link"
+        },
+        {
+            "id": 2,
+            "name": "Basic White T-Shirt",
+            "description": "A plain white t-shirt made from 100% cotton.",
+            "link": "#",
+            "thumbnail": "/product/itachi/2.png",
+            "buylink": "#",
+            "inStock": true
+        },
+        {
+            "id": 3,
+            "name": "Basic White T-Shirt",
+            "description": "A plain white t-shirt made from 100% cotton.",
+            "link": "#",
+            "thumbnail": "/product/itachi/3.png",
+            "buylink": "#",
+            "inStock": true
+        },
+        {
+            "id": 4,
+            "name": "Basic White T-Shirt",
+            "description": "A plain white t-shirt made from 100% cotton.",
+            "link": "#",
+            "thumbnail": "/product/batman/1.png",
+            "buylink": "#",
+            "inStock": true
+        },
+        {
+            "id": 5,
+            "name": "Basic White T-Shirt",
+            "description": "A plain white t-shirt made from 100% cotton.",
+            "link": "#",
+            "thumbnail": "/product/batman/2.png",
+            "buylink": "#",
+            "inStock": true
+        },
+        {
+            "id": 6,
+            "name": "Basic White T-Shirt",
+            "description": "A plain white t-shirt made from 100% cotton.",
+            "link": "#",
+            "thumbnail": "/product/op/1.png",
+            "buylink": "#",
+            "inStock": true
+        },
+        {
+            "id": 7,
+            "name": "Basic White T-Shirt",
+            "description": "A plain white t-shirt made from 100% cotton.",
+            "link": "#",
+            "thumbnail": "/product/cr7/1.png",
+            "buylink": "#",
+            "inStock": true
+        },
+        {
+            "id": 8,
+            "name": "Basic White T-Shirt",
+            "description": "A plain white t-shirt made from 100% cotton.",
+            "link": "#",
+            "thumbnail": "/product/cr7/2.png",
+            "buylink": "#",
+            "inStock": true
+        }
+       
+    ]
+}
