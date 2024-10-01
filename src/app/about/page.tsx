@@ -52,8 +52,7 @@ const content = [
     },
     {
         title: "",
-        description:
-            "",
+        description: "",
         content: (
             <div className="">
                 Running out of content
@@ -62,7 +61,7 @@ const content = [
     },
 ];
 
-export function StickyScrollRevealDemo() {
+const AboutPage: React.FC = () => {
     return (
         <div className="">
             <StickyScroll content={content} />
@@ -70,4 +69,4 @@ export function StickyScrollRevealDemo() {
     );
 }
 
-export default StickyScrollRevealDemo;
+export default AboutPage;
