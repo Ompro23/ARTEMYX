@@ -48,13 +48,11 @@ const content = [
         description:
             "Enjoy the AR Experience",
         content: (
-            <div className="">
+            <div className="bottom-2">
                 hi
             </div>
         ),
     },
- 
-    
 ];
 
 const AboutPage = () => {
