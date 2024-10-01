@@ -33,6 +33,36 @@ const content = [
             </div>
         ),
     },
+    {
+        title: "Seamless Integration",
+        description:
+            "Integrate our platform with your existing tools and workflows effortlessly. Our seamless integration capabilities ensure that you can continue using the tools you love while enhancing your productivity with our features.",
+        content: (
+            <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--purple-500),var(--pink-500))] flex items-center justify-center text-white mb-2 sm:mb-0">
+                Seamless Integration
+            </div>
+        ),
+    },
+    {
+        title: "",
+        description:
+            "",
+        content: (
+            <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--purple-500),var(--pink-500))] flex items-center justify-center text-white mb-2 sm:mb-0">
+                
+            </div>
+        ),
+    },
+    {
+        title: "",
+        description:
+            "",
+        content: (
+            <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--purple-500),var(--pink-500))] flex items-center justify-center text-white mb-2 sm:mb-0">
+                
+            </div>
+        ),
+    },
     
 ];
 
