@@ -6,14 +6,14 @@ const people = [
   {
     id: 1,
     name: "Blaze",
-    designation: "Software Engineer",
+    designation: "CTO",
     image:
       "/avtar/blaze.png",
   },
   {
     id: 2,
     name: "chanchal",
-    designation: "Product Manager",
+    designation: "COO",
     image:
       "/avtar/chanchal.png",
   },
