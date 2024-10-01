@@ -53,6 +53,34 @@ const content = [
             </div>
         ),
     },
+    {
+        title: "     ",
+        description:
+            "      ",
+        content: (
+            <div className="">
+                   
+            </div>
+        ),
+    },{
+        title: "     ",
+        description:
+            "      ",
+        content: (
+            <div className="">
+                   
+            </div>
+        ),
+    },{
+        title: "     ",
+        description:
+            "      ",
+        content: (
+            <div className="">
+                   
+            </div>
+        ),
+    },
 ];
 
 const AboutPage = () => {
