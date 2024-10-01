@@ -49,7 +49,7 @@ const content = [
             "Enjoy the AR Experience",
         content: (
             <div className="bottom-2">
-                hi
+            
             </div>
         ),
     },

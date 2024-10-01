@@ -60,58 +60,53 @@ export const StickyScroll = ({
     }, [activeCard]);
 
     return (
-        <>
-            <motion.div
-                animate={{
-                    backgroundColor: backgroundColors[activeCard % backgroundColors.length],
-                }}
-                className="h-screen overflow-y-auto flex justify-center relative dark:bg-dot-white/[0.2] bg-dot-black/[0.2] space-x-10 rounded-md p-10 pb-40" // Added pb-40 for bottom padding
-                ref={ref}
-            >
-                <div className="relative flex items-start px-4">
-                    <div className="max-w-2xl">
-                        {content.map((item, index) => (
-                            <div key={item.title + index} className="mt-40 my-40">
-                                <motion.h2
-                                    initial={{
-                                        opacity: 0,
-                                    }}
-                                    animate={{
-                                        opacity: activeCard === index ? 1 : 0.3,
-                                    }}
-                                    className="text-2xl font-bold text-slate-100"
-                                >
-                                    {item.title}
-                                </motion.h2>
-                                <motion.p
-                                    initial={{
-                                        opacity: 0,
-                                    }}
-                                    animate={{
-                                        opacity: activeCard === index ? 1 : 0.3,
-                                    }}
-                                    className="text-lg text-slate-300 max-w-sm mt-10"
-                                >
-                                    {item.description}
-                                </motion.p>
-                            </div>
-                        ))}
-                        <div className="h-40" /> {/* Adjusted height of spacer div */}
-                    </div>
+        <motion.div
+            animate={{
+                backgroundColor: backgroundColors[activeCard % backgroundColors.length],
+            }}
+            className="h-screen overflow-y-auto flex justify-center relative dark:bg-dot-white/[0.2] bg-dot-black/[0.2] space-x-10 rounded-md p-10 pb-40" // Added pb-40 for bottom padding
+            ref={ref}
+        >
+            <div className="relative flex items-start px-4">
+                <div className="max-w-2xl">
+                    {content.map((item, index) => (
+                        <div key={item.title + index} className="mt-40 my-40">
+                            <motion.h2
+                                initial={{
+                                    opacity: 0,
+                                }}
+                                animate={{
+                                    opacity: activeCard === index ? 1 : 0.3,
+                                }}
+                                className="text-2xl font-bold text-slate-100"
+                            >
+                                {item.title}
+                            </motion.h2>
+                            <motion.p
+                                initial={{
+                                    opacity: 0,
+                                }}
+                                animate={{
+                                    opacity: activeCard === index ? 1 : 0.3,
+                                }}
+                                className="text-lg text-slate-300 max-w-sm mt-10"
+                            >
+                                {item.description}
+                            </motion.p>
+                        </div>
+                    ))}
+                    <div className="h-40" /> {/* Adjusted height of spacer div */}
                 </div>
-                <motion.div
-                    animate={{ background: backgroundGradient }}
-                    className={cn(
-                        "hidden lg:block h-60 w-80 rounded-md bg-white sticky top-40 overflow-hidden",
-                        contentClassName
-                    )}
-                >
-                    {content[activeCard].content ?? null}
-                </motion.div>
-            </motion.div>
-            <div className="fixed bottom-0 left-0 right-0 p-4 bg-gray-800 text-white">
-                {content[content.length - 1].content ?? null}
             </div>
-        </>
+            <motion.div
+                animate={{ background: backgroundGradient }}
+                className={cn(
+                    "hidden lg:block h-60 w-80 rounded-md bg-white sticky top-40 overflow-hidden",
+                    contentClassName
+                )}
+            >
+                {content[activeCard].content ?? null}
+            </motion.div>
+        </motion.div>
     );
 };
