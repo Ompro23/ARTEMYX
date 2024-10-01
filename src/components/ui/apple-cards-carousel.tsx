@@ -48,13 +48,13 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
   const scrollLeft = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -500, behavior: "smooth" });
+      carouselRef.current.scrollBy({ left: -200, behavior: "smooth" });
     }
   };
 
   const scrollRight = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: 500, behavior: "smooth" });
+      carouselRef.current.scrollBy({ left: 200, behavior: "smooth" });
     }
   };
 
@@ -93,8 +93,8 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
           <div
             className={cn(
-              "flex flex-row justify-start gap-4 pl-4",
-              "max-w-7xl mx-auto" // remove max-w-4xl if you want the carousel to span the full width of its container
+              "flex flex-row justify-start gap-4 pl-2", // Reduced gap and padding-left
+              "max-w-7xl mx-auto"
             )}
           >
             {items.map((item, index) => (
@@ -114,7 +114,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                   },
                 }}
                 key={"card" + index}
-                className="last:pr-[5%] md:last:pr-[33%]  rounded-3xl"
+                className="last:pr-[2%] md:last:pr-[16%] rounded-3xl" // Reduced padding-right
               >
                 {item}
               </motion.div>

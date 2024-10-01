@@ -6,28 +6,28 @@ const people = [
   {
     id: 1,
     name: "Blaze",
-    designation: "CTO",
+    designation: "Error 404",
     image:
       "/avtar/blaze.png",
   },
   {
     id: 2,
     name: "ChanChan",
-    designation: "COO",
+    designation: "Hacker",
     image:
       "/avtar/chanchal.png",
   },
   {
     id: 3,
     name: "Omega",
-    designation: "Software Engineer",
+    designation: "Magician",
     image:
       "/avtar/omega.png",
   },
   {
     id: 4,
     name: "H1000",
-    designation: "Designer",
+    designation: "Creator",
     image:
       "/avtar/h100.png",
   },
@@ -51,7 +51,7 @@ export function WavyBackgroundDemo() {
   return (
     <WavyBackground className="max-w-4xl mx-auto pb-40 ">
       <p className="text-2xl md:text-4xl lg:text-7xl text-white font-bold inter-var text-center">
-        Here we are cool
+        Meet The Fanatics
       </p>
       <br />
       <br />
