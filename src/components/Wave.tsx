@@ -12,7 +12,7 @@ const people = [
   },
   {
     id: 2,
-    name: "chanchal",
+    name: "ChanChan",
     designation: "COO",
     image:
       "/avtar/chanchal.png",
@@ -26,7 +26,7 @@ const people = [
   },
   {
     id: 4,
-    name: "h100",
+    name: "H1000",
     designation: "Designer",
     image:
       "/avtar/h100.png",
