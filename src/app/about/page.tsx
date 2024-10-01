@@ -15,22 +15,6 @@ const content = [
         ),
     },
     {
-        title: "Real time changes",
-        description:
-            "See changes as they happen. With our platform, you can track every modification in real time. No more confusion about the latest version of your project. Say goodbye to the chaos of version control and embrace the simplicity of real-time updates.",
-        content: (
-            <div className="h-full w-full  flex items-center justify-center text-white">
-                <Image
-                    src="/linear.webp"
-                    width={300}
-                    height={300}
-                    className="h-full w-full object-cover"
-                    alt="linear board demo"
-                />
-            </div>
-        ),
-    },
-    {
         title: "Version control",
         description:
             "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
@@ -51,17 +35,18 @@ const content = [
         ),
     },
     {
-        title: "",
-        description: "",
+        title: "Seamless Integration",
+        description:
+            "Integrate our platform with your existing tools and workflows effortlessly. Our seamless integration capabilities ensure that you can continue using the tools you love while enhancing your productivity with our features.",
         content: (
-            <div className="">
-                Running out of content
+            <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--purple-500),var(--pink-500))] flex items-center justify-center text-white mb-2 sm:mb-0">
+                Seamless Integration
             </div>
         ),
     },
 ];
 
-const AboutPage: React.FC = () => {
+export function StickyScrollRevealDemo() {
     return (
         <div className="">
             <StickyScroll content={content} />
@@ -69,4 +54,4 @@ const AboutPage: React.FC = () => {
     );
 }
 
-export default AboutPage;
+export default StickyScrollRevealDemo;

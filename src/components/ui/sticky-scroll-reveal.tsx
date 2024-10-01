@@ -41,14 +41,14 @@ export const StickyScroll = ({
     });
 
     const backgroundColors = [
-        "var(--slate-900)",
         "var(--black)",
+        "var(--slate-900)",
         "var(--neutral-900)",
     ];
     const linearGradients = [
-        "linear-gradient(to bottom right, var(--cyan-500), var(--emerald-500))",
-        "linear-gradient(to bottom right, var(--pink-500), var(--indigo-500))",
-        "linear-gradient(to bottom right, var(--orange-500), var(--yellow-500))",
+        "linear-gradient(to bottom right, var(--black), var(--slate-900))",
+        "linear-gradient(to bottom right, var(--neutral-900), var(--black))",
+        "linear-gradient(to bottom right, var(--slate-900), var(--neutral-900))",
     ];
 
     const [backgroundGradient, setBackgroundGradient] = useState(
@@ -64,13 +64,13 @@ export const StickyScroll = ({
             animate={{
                 backgroundColor: backgroundColors[activeCard % backgroundColors.length],
             }}
-            className="h-screen overflow-y-auto flex justify-center relative dark:bg-dot-white/[0.2] bg-dot-black/[0.2] space-x-10 rounded-md p-10"
+            className="h-screen overflow-y-auto flex justify-center relative dark:bg-dot-white/[0.2] bg-dot-black/[0.2] space-x-10 rounded-md p-10 pb-40" // Added pb-40 for bottom padding
             ref={ref}
         >
             <div className="relative flex items-start px-4">
                 <div className="max-w-2xl">
                     {content.map((item, index) => (
-                        <div key={item.title + index} className="my-40">
+                        <div key={item.title + index} className="lg:my-40 my-20">
                             <motion.h2
                                 initial={{
                                     opacity: 0,
@@ -95,7 +95,7 @@ export const StickyScroll = ({
                             </motion.p>
                         </div>
                     ))}
-                    <div className="h-40" />
+                    <div className="h-40" /> {/* Adjusted height of spacer div */}
                 </div>
             </div>
             <motion.div
