@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
-import Image from "next/image";
 
 const content = [
     {
@@ -46,7 +45,7 @@ const content = [
     },
 ];
 
-export function StickyScrollRevealDemo() {
+const AboutPage = () => {
     return (
         <div className="">
             <StickyScroll content={content} />
@@ -54,4 +53,4 @@ export function StickyScrollRevealDemo() {
     );
 }
 
-export default StickyScrollRevealDemo;
+export default AboutPage;
