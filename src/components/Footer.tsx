@@ -80,17 +80,18 @@ function Footer() {
                     <div>
                         <h3 className='text-white mb-4 text-2xl font-semibold'>Quick Links</h3>
                         <ul className='space-y-2'>
-                            <li><a href='https://example.com/about' className='hover:text-white'>About Us</a></li>
-                            <li><a href='https://example.com/contact' className='hover:text-white'>Contact</a></li>
+                            <li><a href='https://example.com/about' className='hover:text-white'>Home</a></li>
+                            <li><a href='https://example.com/about' className='hover:text-white'>Shop</a></li>
+                            <li><a href='https://example.com/contact' className='hover:text-white'>About</a></li>
                             <li><a href='https://example.com/privacy' className='hover:text-white'>Privacy Policy</a></li>
                             <li><a href='https://example.com/terms' className='hover:text-white'>Terms of Service</a></li>
-                            <li><a href='https://example.com/blog' className='hover:text-white'>Blog</a></li>
+                            {/* <li><a href='https://example.com/blog' className='hover:text-white'>Blog</a></li> */}
                         </ul>
                     </div>
                 </div>
             </div>
             <div className='text-center mt-20 text-gray-500'>
-                &copy; {new Date().getFullYear()} MirrAR. All rights reserved.
+                &copy; {new Date().getFullYear()} ARTMYX. All rights reserved.
             </div>
         </footer>
     );
