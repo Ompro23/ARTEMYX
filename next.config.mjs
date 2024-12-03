@@ -6,7 +6,8 @@ const nextConfig = {
             'aceternity.com', 
             'images.unsplash.com', 
             'unsplash.com', 
-            'drive.google.com'
+            'drive.google.com',
+            'pbs.twimg.com'
         ],
     },
 };

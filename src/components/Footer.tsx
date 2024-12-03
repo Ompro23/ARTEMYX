@@ -80,9 +80,9 @@ function Footer() {
                     <div>
                         <h3 className='text-white mb-4 text-2xl font-semibold'>Quick Links</h3>
                         <ul className='space-y-2'>
-                            <li><a href='https://example.com/about' className='hover:text-white'>Home</a></li>
-                            <li><a href='https://example.com/about' className='hover:text-white'>Shop</a></li>
-                            <li><a href='https://example.com/contact' className='hover:text-white'>About</a></li>
+                            <li><a href='/' className='hover:text-white'>Home</a></li>
+                            <li><a href='/shop' className='hover:text-white'>Shop</a></li>
+                            <li><a href='/about' className='hover:text-white'>About</a></li>
                             <li><a href='https://example.com/privacy' className='hover:text-white'>Privacy Policy</a></li>
                             <li><a href='https://example.com/terms' className='hover:text-white'>Terms of Service</a></li>
                             {/* <li><a href='https://example.com/blog' className='hover:text-white'>Blog</a></li> */}

@@ -5,11 +5,10 @@ import React from "react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import Link from "next/link";
 import productDetails from "@/data/product_details.json";
-import Footer from "@/components/Footer";
 
 const ThreeDCardDemo: React.FC = () => {
   return (
-    <><div className="min-h-screen bg-black py-12 pt-36 dark:bg-grid-white/[0.07]">
+    <div className="min-h-screen bg-black py-12 pt-36 dark:bg-grid-white/[0.07]">
       <h1 className="text-lg md:text-6xl text-center font-sans font-bold mb-2 text-white">All Products</h1>
       <div className="flex flex-wrap justify-center">
         {productDetails.products.map((product) => (
@@ -34,7 +33,8 @@ const ThreeDCardDemo: React.FC = () => {
                   height="1000"
                   width="1000"
                   className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
-                  alt="thumbnail" />
+                  alt="thumbnail"
+                />
               </CardItem>
               <div className="flex justify-between items-center mt-20">
                 <CardItem
@@ -57,11 +57,9 @@ const ThreeDCardDemo: React.FC = () => {
               </div>
             </CardBody>
           </CardContainer>
-
         ))}
       </div>
-    </div><Footer /></>
-
+    </div>
   );
 };
 
