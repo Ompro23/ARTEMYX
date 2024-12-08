@@ -91,7 +91,7 @@ function Footer() {
                 </div>
             </div>
             <div className='text-center mt-20 text-gray-500'>
-                &copy; {new Date().getFullYear()} ARTMYX. All rights reserved.
+                &copy; {new Date().getFullYear()} ARTEMYX. All rights reserved.
             </div>
         </footer>
     );
