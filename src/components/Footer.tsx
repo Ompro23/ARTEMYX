@@ -72,7 +72,7 @@ function Footer() {
                         <ul className='flex space-x-4 justify-start mb-4'>
                             <li><a href='https://example.com/facebook' className='hover:text-white'><img src='/logo/discord.png' alt='Facebook' className='w-6 h-6' /></a></li>
                             <li><a href='https://example.com/snap' className='hover:text-white'><img src='/logo/snap.png' alt='Twitter' className='w-6 h-6' /></a></li>
-                            <li><a href='https://example.com/instagram' className='hover:text-white'><img src='/logo/instagram.png' alt='Instagram' className='w-6 h-6' /></a></li>
+                            <li><a href='https://www.instagram.com/artemyx.in/' className='hover:text-white'><img src='/logo/instagram.png' alt='Instagram' className='w-6 h-6' /></a></li>
                             {/* <li><a href='https://example.com/linkedin' className='hover:text-white'><img src='/path/to/linkedin-logo.png' alt='LinkedIn' className='w-6 h-6' /></a></li>
                             <li><a href='https://example.com/youtube' className='hover:text-white'><img src='/path/to/youtube-logo.png' alt='YouTube' className='w-6 h-6' /></a></li> */}
                         </ul>
