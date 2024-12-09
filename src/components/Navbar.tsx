@@ -29,12 +29,12 @@ function Navbar({ className }: { className?: string }) {
 
         <Link href="/shop">
           <MenuItem setActive={setActive} active={active} item="Shop">
-          <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/shop">Tshirt</HoveredLink>
+          {/* <div className="flex flex-col space-y-4 text-sm"> */}
+            {/* <HoveredLink href="/shop">Tshirt</HoveredLink>
             <HoveredLink href="/hoddie">Hoddie</HoveredLink>
-            <HoveredLink href="/ondemand">On Demand</HoveredLink>
+            <HoveredLink href="/ondemand">On Demand</HoveredLink> */}
             {/* <HoveredLink href="/enterprise">Enterprise</HoveredLink> */}
-          </div>
+          {/* </div> */}
           </MenuItem>
         </Link>
 
