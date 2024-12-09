@@ -1,10 +1,7 @@
-import Loading from './loading';
-import React from 'react'
-
-function loading() {
-  return (
-    <Loading/>    
-)
+export default function Loading() {
+    return (
+        <div className="flex items-center justify-center h-screen bg-black">
+            <img src="/logo/fff.png" alt="Loading" className=" w-auto" />
+        </div>
+    );
 }
-
-export default loading
