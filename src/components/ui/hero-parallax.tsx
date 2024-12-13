@@ -106,9 +106,9 @@ export const Header = () => {
   return (
     <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0 flex flex-col items-center space-y-2">
       <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
-      <Image src="/logo/fff.png" alt="Loading" className="w-auto" width={400} height={400} />
+      <Image src="/logo/logo-white.png" alt="Loading" className="w-auto" width={500} height={500} />
       <h1 className="text-2xl md:text-7xl font-bold dark:text-white text-center md:text-left">
-        The Ultimate <br /><Cover>AR WORLD</Cover>
+      <Cover>ARTEMYX</Cover><br /><p>The AR World</p>
       </h1>
       </div>
       <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200 text-center">
