@@ -108,7 +108,7 @@ export const Header = () => {
       <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
       <Image src="/logo/logo-beige.png" alt="Loading" className="w-auto" width={500} height={500} />
       <h1 className="text-2xl md:text-7xl font-bold dark:text-[#e4dcc7] text-center md:text-left">
-      <Cover>ARTEMYX</Cover><br /><p>The AR World</p>
+      <Cover>ARTEMYX</Cover><br /><p >The AR World</p>
       </h1>
       </div>
       <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-[#e4dcc7] text-center">

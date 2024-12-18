@@ -26,3 +26,30 @@ body {
   }
 }
 
+@font-face {
+  font-family: 'researcher-bold';
+  src: url('/fonts/bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'researcher-regular';
+  src: url('/fonts/regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'researcher-thin';
+  src: url('/fonts/thin.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'researcher-squid';
+  src: url('/fonts/squid.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
