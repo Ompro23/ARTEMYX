@@ -94,7 +94,7 @@
 /* Fade in animation for the image with delay */
 .gif.fadeIn {
     animation: fadeIn 7s forwards;
-    animation-delay: 3.2s; /* Delay to match text animation */
+    animation-delay: 3s; /* Delay to match text animation */
     opacity: 0;
     transform: scale(1);
 }

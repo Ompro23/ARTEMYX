@@ -28,7 +28,7 @@ export default function RootLayout({
     // Simulate a 2-second loading delay
     const timer = setTimeout(() => {
       setIsLoading(false); // Set loading to false after timeout
-    }, 7000);
+    }, 9000);
 
     return () => clearTimeout(timer); // Cleanup timer on unmount
   }, []);
