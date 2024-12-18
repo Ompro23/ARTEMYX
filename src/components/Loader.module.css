@@ -1,0 +1,143 @@
+/* Loader container */
+.loaderWrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000; /* Dark background */
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+
+.loaderWrapper.fadeOut {
+    opacity: 0; /* Fade out loader */
+    pointer-events: none;
+}
+
+.content {
+    text-align: center;
+    color: #fff;
+    position: relative;
+    transition: transform 1s ease-out; /* Zoom-in for fade-out */
+}
+
+.loaderWrapper.fadeOut .content {
+    transform: scale(3); /* Zoom-in effect */
+}
+
+/* Animated text styling */
+.animatedText {
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: "Arial", sans-serif;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #fff;
+}
+
+.animatedText span {
+    display: inline-block;
+    animation: fadeInUp 0.5s ease-in-out;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    margin: 0 0.2rem;
+}
+
+.animatedText span:nth-child(1) {
+    animation-delay: 0.2s;
+}
+.animatedText span:nth-child(2) {
+    animation-delay: 0.4s;
+}
+.animatedText span:nth-child(3) {
+    animation-delay: 0.6s;
+}
+.animatedText span:nth-child(4) {
+    animation-delay: 0.8s;
+}
+.animatedText span:nth-child(5) {
+    animation-delay: 1s;
+}
+.animatedText span:nth-child(6) {
+    animation-delay: 1.2s;
+}
+
+/* Fade in-up animation for text */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* GIF styling */
+.gif {
+    width: 200px;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 7s ease-in, transform 7s ease-in; /* Smooth appearance and scaling */
+}
+
+/* Fade in animation for the image with delay */
+.gif.fadeIn {
+    animation: fadeIn 7s forwards;
+    animation-delay: 3.2s; /* Delay to match text animation */
+    opacity: 0;
+    transform: scale(1);
+}
+
+/* Fade-in keyframes for the image */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Custom voice fade-in effect (if you want to animate other parts of your page) */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 768px) {
+    .animatedText {
+        font-size: 1.5rem;
+    }
+
+    .gif {
+        width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .animatedText {
+        font-size: 1.2rem;
+    }
+
+    .gif {
+        width: 120px;
+    }
+}
