@@ -9,6 +9,7 @@ export default function Home() {
     <>
       <Hero />
       <Info />
+      
       <Review />
       <Wave />
       <Footer />

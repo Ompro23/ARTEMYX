@@ -123,18 +123,18 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
         </div>
         <div className="flex justify-end gap-2 mr-10">
           <button
-            className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
+            className="relative z-40 h-10 w-10 rounded-full bg-[#e4dcc7] flex items-center justify-center disabled:opacity-50"
             onClick={scrollLeft}
             disabled={!canScrollLeft}
           >
-            <IconArrowNarrowLeft className="h-6 w-6 text-gray-500" />
+            <IconArrowNarrowLeft className="h-6 w-6 text-black" />
           </button>
           <button
-            className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
+            className="relative z-40 h-10 w-10 rounded-full bg-[#e4dcc7] flex items-center justify-center disabled:opacity-50"
             onClick={scrollRight}
             disabled={!canScrollRight}
           >
-            <IconArrowNarrowRight className="h-6 w-6 text-gray-500" />
+            <IconArrowNarrowRight className="h-6 w-6 text-black" />
           </button>
         </div>
       </div>
@@ -158,13 +158,13 @@ export const Card = ({
       <div className="relative z-40 p-8">
         <motion.p
           layoutId={layout ? `category-${card.category}` : undefined}
-          className="text-white text-sm md:text-base font-medium font-sans text-left"
+          className="text-[#e4dcc7] text-sm md:text-base font-medium font-sans text-left"
         >
           {card.category}
         </motion.p>
         <motion.p
           layoutId={layout ? `title-${card.title}` : undefined}
-          className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-sans mt-2"
+          className="text-[#e4dcc7] text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-sans mt-2"
         >
           {card.title}
         </motion.p>

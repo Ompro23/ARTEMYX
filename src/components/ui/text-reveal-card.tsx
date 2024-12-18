@@ -67,7 +67,7 @@ export const TextRevealCard = ({
       onTouchMove={touchMoveHandler}
       ref={cardRef}
       className={cn(
-        "bg-[#1d1c20] border border-white/[0.08] w-full max-w-7xl rounded-lg p-4 sm:p-8 relative overflow-hidden",
+        "bg-[#1d1c20] border border-[#e4dcc7]/[0.5] w-full max-w-7xl rounded-lg p-4 sm:p-8 relative overflow-hidden",
         className
       )}
     >
@@ -95,7 +95,7 @@ export const TextRevealCard = ({
             style={{
               textShadow: "4px 4px 15px rgba(0,0,0,0.5)",
             }}
-            className="text-2xl sm:text-8xl lg:text-7xl py-4 sm:py-10 font-bold text-white bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300 text-center"
+            className="text-2xl sm:text-8xl lg:text-7xl py-4 sm:py-10 font-bold text-[#e4dcc7] bg-clip-text text-[#e4dcc7] bg-gradient-to-b from-white to-neutral-300 text-center"
           >
             {revealText}
           </p>
@@ -110,8 +110,8 @@ export const TextRevealCard = ({
           className="h-24 sm:h-48 w-[4px] sm:w-[8px] bg-gradient-to-b from-transparent via-neutral-800 to-transparent absolute z-50 will-change-transform"
         ></motion.div>
 
-        <div className="overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,white,transparent)]">
-          <p className="text-2xl sm:text-8xl lg:text-7xl py-4 sm:py-10 font-bold bg-clip-text text-transparent bg-[#323238] text-center">
+        <div className="overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,[white],transparent)]">
+          <p className="text-2xl sm:text-8xl lg:text-7xl py-4 sm:py-10 font-bold bg-clip-text text-[transparent] bg-[#323238] text-center">
             {text}
           </p>
           <MemoizedStars />
@@ -129,7 +129,7 @@ export const TextRevealCardTitle = ({
   className?: string;
 }) => {
   return (
-    <h2 className={twMerge("text-white text-lg sm:text-xl lg:text-2xl mb-2", className)}>
+    <h2 className={twMerge("text-[#e4dcc7] text-lg sm:text-xl lg:text-2xl mb-2", className)}>
       {children}
     </h2>
   );
@@ -143,7 +143,7 @@ export const TextRevealCardDescription = ({
   className?: string;
 }) => {
   return (
-    <p className={twMerge("text-[#a9a9a9] text-sm sm:text-base lg:text-lg", className)}>
+    <p className={twMerge("text-[#e4dcc7] text-sm sm:text-base lg:text-lg", className)}>
       {children}
     </p>
   );

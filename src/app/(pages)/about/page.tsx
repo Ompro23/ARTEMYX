@@ -10,11 +10,14 @@ import Footer from "@/components/Footer";
 
 const AboutPage = () => {
     return (
-        <div className="dark:bg-black dark:bg-grid-white/[0.07] p-4 sm:p-6 md:p-8 lg:p-10">
+            <>
+        <div className="dark:bg-black dark:bg-grid-[#e4dcc7]/[0.09] p-4 sm:p-6 md:p-8 lg:p-10">
             <TextRevealCardPreview />
             <BentoGridThirdDemo />
-            <Footer />
         </div>
+        <Footer />
+        
+        </>
     );
 }
 
