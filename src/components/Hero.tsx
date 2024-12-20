@@ -7,94 +7,94 @@ export function HeroParallaxDemo() {
 }
 export const products = [
   {
-    title: "Moonbeam",
+    title: "Itachi",
     link: "#",
     thumbnail:
       "/Instagram Post/1.png",
   },
   {
-    title: "Cursor",
+    title: "Uchiha clan",
     link: "#",
     thumbnail:
       "/Instagram Post/3.png",
   },
   {
-    title: "Rogue",
+    title: "Eye Of Itachi",
     link: "#",
     thumbnail:
       "/Instagram Post/5.png",
   },
 
   {
-    title: "Editorially",
+    title: "One Piece",
     link: "#",
     thumbnail:
       "/Instagram Post/7.png",
   },
   {
-    title: "Editrix AI",
+    title: "Zoro",
     link: "#",
     thumbnail:
       "/Instagram Post/9.png",
   },
   {
-    title: "Pixel Perfect",
+    title: "Monkey D Luffy",
     link: "#",
     thumbnail:
       "/Instagram Post/11.png",
   },
 
   {
-    title: "Algochurn",
+    title: "CR7",
     link: "#",
     thumbnail:
       "/Instagram Post/13.png",
   },
   {
-    title: "Aceternity UI",
+    title: "Linonel Messi",
     link: "#",
     thumbnail:
       "/Instagram Post/20.png",
   },
   {
-    title: "Tailwind Master Kit",
+    title: "harry potter",
     link: "#",
     thumbnail:
       "/Instagram Post/23.png",
   },
   {
-    title: "SmartBridge",
+    title: "Might Guy",
     link: "#",
     thumbnail:
       "/Instagram Post/26.png",
   },
   
   {
-    title: "Golden Bells Academy",
+    title: "Rock Lee",
     link: "#",
     thumbnail:
     "/Instagram Post/29.png",
   },
   {
-    title: "Invoker Labs",
+    title: "Toji Fushiguro",
     link: "#",
     thumbnail:
     "/Instagram Post/31.png",
   },
   {
-    title: "Creme Digital",
+    title: "Grizliy Bear",
     link: "#",
     thumbnail:
     "/Instagram Post/33.png",
   },
   {
-    title: "Renderwork Studio",
+    title: "We Bare Bears",
     link: "#",
     thumbnail:
       "/Instagram Post/37.png",
   },
   {
-    title: "E Free Invoice",
+    title: "Zenitsu",
     link: "#",
     thumbnail:
       "/Instagram Post/39.png",
