@@ -188,6 +188,33 @@
             "thumbnail": "/product/webe-3.png",
             "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
             "inStock": true
+        },
+        {
+            "id": 22,
+            "name": "Itachi-1 AR Tee Oversized",
+            "description": "Embrace the power of Itachi with the Itachi-1 Oversized AR Tee. Experience the magic of augmented reality and wear a piece of anime history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/itachi.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 23,
+            "name": "Itachi-2 AR Tee Oversized",
+            "description": "Embrace the power of Itachi with the Itachi-2 Oversized AR Tee. Experience the magic of augmented reality and wear a piece of anime history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/itachi-2.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 24,
+            "name": "Itachi-3 AR Tee Oversized",
+            "description": "Embrace the power of Itachi with the Itachi-3 Oversized AR Tee. Experience the magic of augmented reality and wear a piece of anime history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/itachi-3.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
         }
     ]
 }
