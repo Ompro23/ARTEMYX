@@ -1,27 +1,193 @@
-
 {
     "products": [
-        
         {
             "id": 1,
-            "name": "CR7 AR Tee Oversized",
-            "description": "Celebrate the legend of Cristiano Ronaldo with the CR7 Oversized AR Tee. Experience the magic of augmented reality and wear a piece of football history.",
+            "name": "CR7-1 AR Tee Oversized",
+            "description": "Celebrate the legend of Cristiano Ronaldo with the CR7-1 Oversized AR Tee. Experience the magic of augmented reality and wear a piece of football history.",
             "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
-            "thumbnail": "/product/cr7/full2.png",
+            "thumbnail": "/product/cr7-1.png",
             "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
             "inStock": true
         },
         {
             "id": 2,
-            "name": "Deadpool 3 AR Tee Oversized",
-            "description": "Celebrate the epic team-up of Deadpool and Wolverine with Deadpool x Wolverine. Embrace the magic of augmented reality and wear your favorite superheroes in style.",
-            "link": "#",
+            "name": "CR7-2 AR Tee Oversized",
+            "description": "Celebrate the legend of Cristiano Ronaldo with the CR7-2 Oversized AR Tee. Experience the magic of augmented reality and wear a piece of football history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/cr7-2.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 3,
+            "name": "Batman AR Tee Oversized",
+            "description": "Embrace the darkness with the Batman Oversized AR Tee. Experience the magic of augmented reality and wear a piece of superhero history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/bt-1.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 4,
+            "name": "Batman-2 AR Tee Oversized",
+            "description": "Embrace the darkness with the Batman-2 Oversized AR Tee. Experience the magic of augmented reality and wear a piece of superhero history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/bt-2.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 5,
+            "name": "Messi-1 AR Tee Oversized",
+            "description": "Celebrate the legend of Lionel Messi with the Messi-1 Oversized AR Tee. Experience the magic of augmented reality and wear a piece of football history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/ms-1.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 6,
+            "name": "Messi-2 AR Tee Oversized",
+            "description": "Celebrate the legend of Lionel Messi with the Messi-2 Oversized AR Tee. Experience the magic of augmented reality and wear a piece of football history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/ms-2.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 7,
+            "name": "Harry Potter AR Tee Oversized",
+            "description": "Step into the wizarding world with the Harry Potter Oversized AR Tee. Experience the magic of augmented reality and wear a piece of magical history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/hp.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 8,
+            "name": "Rock Lee AR Tee Oversized",
+            "description": "Unleash your inner ninja with the Rock Lee Oversized AR Tee. Experience the magic of augmented reality and wear a piece of anime history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/rl.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 9,
+            "name": "One Piece AR Tee Oversized",
+            "description": "Set sail with the One Piece Oversized AR Tee. Experience the magic of augmented reality and wear a piece of pirate history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/op.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 10,
+            "name": "Toji AR Tee Oversized",
+            "description": "Channel the power of Toji with the Toji Oversized AR Tee. Experience the magic of augmented reality and wear a piece of anime history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/toji.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 11,
+            "name": "Zenitsu AR Tee Oversized",
+            "description": "Embrace the thunder with the Zenitsu Oversized AR Tee. Experience the magic of augmented reality and wear a piece of anime history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/zenitsu.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 12,
+            "name": "Deadpool & Wolverine AR Tee Oversized",
+            "description": "Join the anti-hero duo with the Deadpool & Wolverine Oversized AR Tee. Experience the magic of augmented reality and wear a piece of comic history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
             "thumbnail": "/product/deadpool/1-full.png",
-            "buylink": "https://artemyx.dm2buy.com/product/ee2b4afe21db7d669e7d42d65442ec3d",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 13,
+            "name": "Zoro-1 AR Tee Oversized",
+            "description": "Wield the swords of Zoro with the Zoro-1 Oversized AR Tee. Experience the magic of augmented reality and wear a piece of pirate history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/zoro-1.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 14,
+            "name": "Zoro-2 AR Tee Oversized",
+            "description": "Wield the swords of Zoro with the Zoro-2 Oversized AR Tee. Experience the magic of augmented reality and wear a piece of pirate history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/zoro-2.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 15,
+            "name": "Zoro-3 AR Tee Oversized",
+            "description": "Wield the swords of Zoro with the Zoro-3 Oversized AR Tee. Experience the magic of augmented reality and wear a piece of pirate history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/zoro-3.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 16,
+            "name": "Panda AR Tee Oversized",
+            "description": "Get cuddly with the Panda Oversized AR Tee. Experience the magic of augmented reality and wear a piece of animal history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/paanda.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 17,
+            "name": "Ice Bear AR Tee Oversized",
+            "description": "Stay cool with the Ice Bear Oversized AR Tee. Experience the magic of augmented reality and wear a piece of animal history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/ice.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 18,
+            "name": "Grizzly Bear AR Tee Oversized",
+            "description": "Get wild with the Grizzly Bear Oversized AR Tee. Experience the magic of augmented reality and wear a piece of animal history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/griz.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 19,
+            "name": "We Bear Bears-1 AR Tee Oversized",
+            "description": "Join the bear trio with the We Bear Bears-1 Oversized AR Tee. Experience the magic of augmented reality and wear a piece of cartoon history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/webe-1.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 20,
+            "name": "We Bear Bears-2 AR Tee Oversized",
+            "description": "Join the bear trio with the We Bear Bears-2 Oversized AR Tee. Experience the magic of augmented reality and wear a piece of cartoon history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/webe-2.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
+            "inStock": true
+        },
+        {
+            "id": 21,
+            "name": "We Bear Bears-3 AR Tee Oversized",
+            "description": "Join the bear trio with the We Bear Bears-3 Oversized AR Tee. Experience the magic of augmented reality and wear a piece of cartoon history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/webe-3.png",
+            "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
             "inStock": true
         }
-        
-       
     ]
 }
-
