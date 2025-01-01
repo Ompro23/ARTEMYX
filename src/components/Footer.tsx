@@ -91,7 +91,7 @@ function Footer() {
                 </div>
             </div>
             <div className='text-center mt-20 text-[#e4dcc7]'>
-                &copy; {new Date().getFullYear()} ARTEMYX. All rights reserved.
+                &copy; {new Date().getFullYear()} HAZHTeq Innovations Pvt Ltd. All rights reserved.
             </div>
         </footer>
     );

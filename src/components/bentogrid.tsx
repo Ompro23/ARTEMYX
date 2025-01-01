@@ -66,13 +66,17 @@ const SkeletonOne = () => {
         className="flex flex-row rounded-full border border-neutral-100 dark:border-[#e4dcc7]/[0.3] p-2  items-center space-x-2 bg-white dark:bg-black"
       >
         <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
-        <div className="w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900" />
+        <div className="w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900">
+          <p className="text-xs text-[#e4dcc7]">Ohh todays fashion is so boring</p>
+        </div>
       </motion.div>
       <motion.div
         variants={variantsSecond}
         className="flex flex-row rounded-full border border-neutral-100 dark:border-[#e4dcc7]/[0.3] p-2 items-center space-x-2 w-3/4 ml-auto bg-white dark:bg-black"
       >
-        <div className="w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900" />
+        <div className="w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900">
+          <p className="text-xs text-[#e4dcc7]">Lets add some magic...</p>
+        </div>
         <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
       </motion.div>
       <motion.div
@@ -80,11 +84,14 @@ const SkeletonOne = () => {
         className="flex flex-row rounded-full border border-neutral-100 dark:border-[#e4dcc7]/[0.3] p-2 items-center space-x-2 bg-white dark:bg-black"
       >
         <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
-        <div className="w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900" />
+        <div className="w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900">
+          <p className="text-xs text-[#e4dcc7]">Art + Mix Reality = Artemyx</p>
+        </div>
       </motion.div>
     </motion.div>
   );
 };
+
 const SkeletonTwo = () => {
   const variants = {
     initial: {
@@ -103,7 +110,15 @@ const SkeletonTwo = () => {
       },
     },
   };
-  const arr = new Array(6).fill(0);
+  const texts = [
+    "Augmented",
+    "Reality",
+    "Technology",
+    "Elevating",
+    "Modern",
+    "Youthful",
+    "Experiences",
+  ];
   return (
     <motion.div
       initial="initial"
@@ -111,19 +126,22 @@ const SkeletonTwo = () => {
       whileHover="hover"
       className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-[#e4dcc7]/[0.3] bg-dot-[#e4dcc7]/[0.3] flex-col space-y-2"
     >
-      {arr.map((_, i) => (
+      {texts.map((text, i) => (
         <motion.div
-          key={"skelenton-two" + i}
+          key={"skeleton-two" + i}
           variants={variants}
           style={{
             maxWidth: Math.random() * (100 - 40) + 40 + "%",
           }}
-          className="flex flex-row rounded-full border border-neutral-100 dark:border-[#e4dcc7]/[0.3] p-2  items-center space-x-2 bg-neutral-100 dark:bg-black w-full h-4"
-        ></motion.div>
+          className="flex flex-row rounded-full border border-neutral-100 dark:border-[#e4dcc7]/[0.3] p-2 items-center space-x-2 bg-neutral-100 dark:bg-black w-full h-4"
+        >
+          <p className="text-xs text-[#e4dcc7]">{text}</p>
+        </motion.div>
       ))}
     </motion.div>
   );
 };
+
 const SkeletonThree = () => {
   const variants = {
     initial: {
@@ -154,6 +172,7 @@ const SkeletonThree = () => {
     </motion.div>
   );
 };
+
 const SkeletonFour = () => {
   const first = {
     initial: {
@@ -236,6 +255,7 @@ const SkeletonFour = () => {
     </motion.div>
   );
 };
+
 const SkeletonFive = () => {
   const variants = {
     initial: {
@@ -279,9 +299,7 @@ const SkeletonFive = () => {
           width="100"
           className="rounded-full h-10 w-10"
         />
-        <p className="text-xs text-[#e4dcc7]">
-          Your Wish is Our Command.
-        </p>
+        <p className="text-xs text-[#e4dcc7]">Your Wish is Our Command.</p>
       </motion.div>
       <motion.div
         variants={variantsSecond}
@@ -293,11 +311,12 @@ const SkeletonFive = () => {
     </motion.div>
   );
 };
+
 const items = [
   {
     title: "AR Based Digital Avatar",
     description: (
-      <span className="text-sm text-[#e4dcc7]" >
+      <span className="text-sm text-[#e4dcc7]">
         Experience our AR-powered Clothes which embrace the Amazing of Future.
       </span>
     ),

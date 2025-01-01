@@ -112,9 +112,8 @@ export const Header = () => {
       </h1>
       </div>
       <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-[#e4dcc7] text-center">
-      We build beautiful products with the latest technologies and frameworks.
-      We are a team of passionate developers and designers that love to build
-      amazing products.
+      We create stunning fashion experiences using cutting-edge AR technologies and frameworks.
+Our team of passionate designers and developers is dedicated to revolutionizing how you explore and experience fashion, merging style with immersive innovation.
       </p>
     </div>
     
