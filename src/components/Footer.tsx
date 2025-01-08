@@ -83,8 +83,8 @@ function Footer() {
                             <li><a href='/' className='hover:text-[#e4dcc7]'>Home</a></li>
                             <li><a href='/shop' className='hover:text-[#e4dcc7]'>Shop</a></li>
                             <li><a href='/about' className='hover:text-[#e4dcc7]'>About</a></li>
-                            <li><a href='https://example.com/privacy' className='hover:text-[#e4dcc7]'>Privacy Policy</a></li>
-                            <li><a href='https://example.com/terms' className='hover:text-[#e4dcc7]'>Terms of Service</a></li>
+                            <li><a href='/privacypolicy' className='hover:text-[#e4dcc7]'>Privacy Policy</a></li>
+                            <li><a href='/t&c' className='hover:text-[#e4dcc7]'>Terms of Service</a></li>
                             {/* <li><a href='https://example.com/blog' className='hover:text-white'>Blog</a></li> */}
                         </ul>
                     </div>

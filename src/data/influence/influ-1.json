@@ -7,7 +7,7 @@
             "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
             "thumbnail": "/product/cr7-1.png",
             "buylink": "https://artemyx.dm2buy.com/product/fa8a241c12f0ce9a799603a18b8a922b",
-            "inStock": true
+            "secondaryImage": "/product/cr7-1.png"
         },
         {
             "id": 2,
@@ -16,7 +16,7 @@
             "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
             "thumbnail": "/product/cr7-2.png",
             "buylink": "https://artemyx.dm2buy.com/product/e77fe291f895d7189c3b9a845c96cc66",
-            "inStock": true
+            "secondaryImage": "/product/cr7-2.png"
         },
         {
             "id": 3,
@@ -25,7 +25,25 @@
             "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
             "thumbnail": "/product/bt-1.png",
             "buylink": "https://artemyx.dm2buy.com/product/c458442230375a6f06cbafac8ca44089",
-            "inStock": true
+            "secondaryImage": "/product/bt-1.png"
+        },
+        {
+            "id": 4,
+            "name": "Batman-1 AR Tee Oversized",
+            "description": "Embrace the darkness with the Batman Oversized AR Tee. Experience the magic of augmented reality and wear a piece of superhero history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/bt-1.png",
+            "buylink": "https://artemyx.dm2buy.com/product/c458442230375a6f06cbafac8ca44089",
+            "secondaryImage": "/product/bt-1.png"
+        },
+        {
+            "id": 5,
+            "name": "Batman-1 AR Tee Oversized",
+            "description": "Embrace the darkness with the Batman Oversized AR Tee. Experience the magic of augmented reality and wear a piece of superhero history.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/product/bt-1.png",
+            "buylink": "https://artemyx.dm2buy.com/product/c458442230375a6f06cbafac8ca44089",
+            "secondaryImage": "/product/bt-1.png"
         }
-    ]   
+    ]
 }

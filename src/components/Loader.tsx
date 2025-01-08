@@ -34,7 +34,7 @@ const Loader = ({ onFinish }: { onFinish: () => void }) => {
         style={{ width: "100%", maxWidth: "300px" }} // Make image responsive
         />
       </center>
-      <p className={styles.animatedText}>
+      <p className={styles.animatedText} style={{ color : "#e4dcc7" }}>
         <span>Welcome</span>
         <span>to</span>
         <span>the</span>

@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation"; // Import usePathname
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import Loader from "@/components/Loader"; // Import the Loader component
+import Loader from "@/components/Loader";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,27 +23,30 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [isLoading, setIsLoading] = useState(true); // Track loading state
+  const [isLoading, setIsLoading] = useState(true);
+  const pathname = usePathname(); // Get current route
+
+  // Define routes where Navbar should not appear
+  const noNavbarRoutes = ["/influensours", ];
 
   useEffect(() => {
-    // Simulate a 2-second loading delay
     const timer = setTimeout(() => {
-      setIsLoading(false); // Set loading to false after timeout
-    }, 9000);
+      setIsLoading(false);
+    }, 2000);
 
-    return () => clearTimeout(timer); // Cleanup timer on unmount
+    return () => clearTimeout(timer);
   }, []);
+
+  const showNavbar = !noNavbarRoutes.includes(pathname);
 
   return (
     <html lang="en" className="dark">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {isLoading ? (
-          <Loader onFinish={() => setIsLoading(false)} /> // Show loader while loading
+          <Loader onFinish={() => setIsLoading(false)} />
         ) : (
           <>
-            <div>
-              <Navbar />
-            </div>
+            {showNavbar && <Navbar />} {/* Conditionally render Navbar */}
             {children}
           </>
         )}
