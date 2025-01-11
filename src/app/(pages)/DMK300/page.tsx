@@ -41,6 +41,7 @@ const ThreeDCardDemo: React.FC = () => {
 
     updateVisitorCount();
   }, []);
+
   const words = ["Influencers", "Artemyx", "Ar", "Amazingness"];
   return (
     <>
@@ -61,19 +62,19 @@ const ThreeDCardDemo: React.FC = () => {
             </div>
           </div>
           <BackgroundLines className="">
-            <CardContainer className="inter-var m-4 w-full h-full flex justify-center">
+            <CardContainer className="inter-var m-4 w-full lg:w-[50%] h-full flex justify-center">
               <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-[#e4dcc7]/[0.4] dark:bg-[black] dark:border-[#e4dcc7]/[0.2] border-black/[0.1] w-full lg:w-1/2 h-full rounded-xl p-6 border">
                 <CardItem
                   translateZ="50"
                   className="text-xl font-bold text-neutral-600 dark:text-[#e4dcc7]"
                 >
                   <Highlight className="text-black dark:text-white">
-                    Saloni Patel
+                    Damak Sharma
                   </Highlight>
                 </CardItem>
                 <CardItem translateZ="100" className="w-full mt-4">
                   <Image
-                    src="/influensours/Saloni_Patel.png"
+                    src="/influensours/Damak_Sharma.jpeg"
                     height={1000}
                     width={1000}
                     priority
@@ -81,13 +82,26 @@ const ThreeDCardDemo: React.FC = () => {
                     alt="Influencer Image"
                   />
                 </CardItem>
-                <div className="flex justify-between items-center mt-20 flex-col">
+                <div className="flex justify-between items-center mt-10 flex-col">
                   <CardItem
                     translateZ={20}
-                    className="rounded-xl text-xs font-normal dark:text-[#e4dcc7]"
+                    className="rounded-xl text-xs font-normal dark:text-[#e4dcc7] "
                   >
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Atque, nesciunt illo?
+                    I am an actor, dancer and model I love to create content and
+                    meet new people!
+                  </CardItem>
+                  <br />
+                  <CardItem
+                    translateZ={20}
+                    className="rounded-xl text-xs font-normal dark:text-[#e4dcc7] "
+                  >
+                    Thoughts :
+                    <br />
+                    I chose artemyx because the idea of creating something that
+                    can connect people to reality by Ai was really different and
+                    special! So wanted to make something that is connecting to
+                    me like my future home ! That will be my future goal as well
+                    so i chose nyc !
                   </CardItem>
                   <CardItem
                     translateZ={20}
@@ -104,6 +118,7 @@ const ThreeDCardDemo: React.FC = () => {
             <h1 className="md:text-7xl text-3xl lg:text-5xl font-bold text-center text-white relative ">
               All Products
             </h1>
+
             <div className="w-[20rem] h-10 relative overflow-hidden rounded-b-full">
               {/* Gradients */}
               <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
@@ -125,29 +140,29 @@ const ThreeDCardDemo: React.FC = () => {
               <div className="absolute inset-0 w-full h-full bg-transparent [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
             </div>
           </div>
-            <div className="bg-gray-50 md:relative group/card dark:bg-[black] dark:hover:shadow-2xl dark:hover:shadow-[#e4dcc7]/[0.1] dark:bg-[black] dark:border-[#e4dcc7]/[0.2]  w-auto lg:w-[50vw] lg:h-[50rem] rounded-xl p-4 lg:p-12 border lg:mx-auto m-3">
+          <div className="bg-gray-50 md:relative group/card dark:bg-[black] dark:hover:shadow-2xl dark:hover:shadow-[#e4dcc7]/[0.1] dark:bg-[black] dark:border-[#e4dcc7]/[0.2]  w-auto lg:w-[50vw] lg:h-[50rem] rounded-xl p-4 lg:p-12 border lg:mx-auto m-3">
             <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-10 w-full justify-center align-center content-center">
               {/* Left Side: Product Thumbnails */}
               <div className="flex flex-row lg:flex-col gap-2 w-full lg:w-[30%] overflow-x-auto lg:overflow-visible justify-center">
-              {productDetails.products.map((product) => (
-                <div
-                key={product.id}
-                className={`cursor-pointer border ${
-                  selectedProduct.id === product.id
-                  ? "border-[#e4dcc7]"
-                  : "border-transparent"
-                } p-1 rounded-md transition-transform duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg dark:hover:shadow-[#e4dcc7]/[0.2]`}
-                onMouseEnter={() => setSelectedProduct(product)}
-                >
-                <Image
-                  src={product.thumbnail}
-                  height={50}
-                  width={120}
-                  alt={product.name}
-                  className="w-30 lg:w-30 h-30 rounded-md object-cover cursor-pointer hover:opacity-80 align-center justify-center content-center"
-                />
-                </div>
-              ))}
+                {productDetails.products.map((product) => (
+                  <div
+                    key={product.id}
+                    className={`cursor-pointer border ${
+                      selectedProduct.id === product.id
+                        ? "border-[#e4dcc7]"
+                        : "border-transparent"
+                    } p-1 rounded-md transition-transform duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg dark:hover:shadow-[#e4dcc7]/[0.2]`}
+                    onMouseEnter={() => setSelectedProduct(product)}
+                  >
+                    <Image
+                      src={product.thumbnail}
+                      height={50}
+                      width={120}
+                      alt={product.name}
+                      className="w-30 lg:w-30 h-30 rounded-md object-cover cursor-pointer hover:opacity-80 align-center justify-center content-center"
+                    />
+                  </div>
+                ))}
               </div>
 
               {/* Right Side: Main Display Card */}

@@ -27,7 +27,7 @@ export default function RootLayout({
   const pathname = usePathname(); // Get current route
 
   // Define routes where Navbar should not appear
-  const noNavbarRoutes = ["/influensours", ];
+  const noNavbarRoutes = ["/DMK300", ];
 
   useEffect(() => {
     const timer = setTimeout(() => {
