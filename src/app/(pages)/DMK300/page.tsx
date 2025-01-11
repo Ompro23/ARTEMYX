@@ -91,7 +91,6 @@ const ThreeDCardDemo: React.FC = () => {
                     translateZ={20}
                     className="rounded-xl text-xs font-normal dark:text-[#e4dcc7]"
                   >
-                    {/* <br /> */}
                     I chose Artemyx because the idea of creating something that
                     can connect people to reality by AI was really different and
                     special! I wanted to create something connecting to me, like

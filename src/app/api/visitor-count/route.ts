@@ -1,38 +1,68 @@
-import fs from "fs";
-import path from "path";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { MongoClient } from "mongodb";
 
-// Path to the JSON file
-const filePath = path.join(process.cwd(), "src", "data", "visitorCount.json");
+// MongoDB client setup
+const uri = process.env.MONGODB_URI!;
+const client = new MongoClient(uri);
+const dbName = "visitorCountsDB";
+const collectionName = "pageCounts";
 
-export async function GET() {
+// Function to get visitor count from MongoDB
+const getVisitorCount = async (pageName: string) => {
   try {
-    const fileData = fs.readFileSync(filePath, "utf-8");
-    const { count } = JSON.parse(fileData);
-    return NextResponse.json({ count });
+    await client.connect();
+    const db = client.db(dbName);
+    const collection = db.collection(collectionName);
+
+    const result = await collection.findOne({ pageName });
+
+    return result ? result.count : 0; // Return count or 0 if not found
   } catch (error) {
-    console.error("Error reading visitor count:", error);
-    return NextResponse.json(
-      { error: "Failed to read visitor count" },
-      { status: 500 }
-    );
+    console.error("Error fetching visitor count:", error);
+    return 0; // Return 0 in case of error
+  } finally {
+    await client.close();
   }
-}
+};
 
-export async function POST() {
+// Function to update visitor count in MongoDB
+const updateVisitorCount = async (pageName: string, newCount: number) => {
   try {
-    const fileData = fs.readFileSync(filePath, "utf-8");
-    const data = JSON.parse(fileData);
-    const newCount = data.count + 1;
+    await client.connect();
+    const db = client.db(dbName);
+    const collection = db.collection(collectionName);
 
-    // Update the JSON file
-    fs.writeFileSync(filePath, JSON.stringify({ count: newCount }, null, 2));
-    return NextResponse.json({ count: newCount });
+    // Update or insert the document using pageName as identifier
+    await collection.updateOne(
+      { pageName },
+      { $set: { count: newCount } },
+      { upsert: true } // Insert if the page document does not exist
+    );
   } catch (error) {
     console.error("Error updating visitor count:", error);
-    return NextResponse.json(
-      { error: "Failed to update visitor count" },
-      { status: 500 }
-    );
+  } finally {
+    await client.close();
+  }
+};
+
+// API to get and increment visitor count
+export async function GET(req: NextRequest) {
+  const pageName = "DMK300"; // Define your page identifier (this could be dynamic if needed)
+  const count = await getVisitorCount(pageName);
+  return NextResponse.json({ count });
+}
+
+export async function POST(req: NextRequest) {
+  const pageName = "DMK300"; // Define your page identifier (this could be dynamic if needed)
+
+  try {
+    const currentCount = await getVisitorCount(pageName);
+    const newCount = currentCount + 1;
+
+    await updateVisitorCount(pageName, newCount);
+    return NextResponse.json({ count: newCount });
+  } catch (error) {
+    console.error("Error incrementing visitor count:", error);
+    return NextResponse.json({ count: 0 }, { status: 500 });
   }
 }
