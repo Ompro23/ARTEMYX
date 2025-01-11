@@ -19,7 +19,7 @@ const ThreeDCardDemo: React.FC = () => {
   useEffect(() => {
     const fetchVisitorCount = async () => {
       try {
-        const response = await fetch("/api/visitor-count/DMK300", {
+        const response = await fetch("/api/visitor-count/test", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
