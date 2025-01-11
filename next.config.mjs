@@ -10,6 +10,7 @@ const nextConfig = {
             'pbs.twimg.com'
         ],
     },
+    reactStrictMode: false,
 };
 
 export default nextConfig;
