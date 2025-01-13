@@ -123,28 +123,28 @@ const ThreeDCardDemo: React.FC = () => {
               />
             </div>
           </div>
-          <div className="bg-gray-50 md:relative group/card dark:bg-[black] dark:hover:shadow-2xl dark:hover:shadow-[#e4dcc7]/[0.1] w-auto lg:w-[50vw] lg:h-[50rem] rounded-xl p-4 lg:p-12 border lg:mx-auto m-3">
+          <div className="bg-gray-50 md:relative group/card dark:bg-[black] dark:hover:shadow-2xl dark:hover:shadow-[#e4dcc7]/[0.1] w-auto lg:w-[50vw] lg:h-[50] mb-20 rounded-xl p-4 lg:p-12 border lg:mx-auto m-3">
             <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-10 w-full justify-center">
               {/* Thumbnails */}
-              <div className="flex flex-row lg:flex-col gap-2 w-full lg:w-[30%] overflow-x-auto lg:overflow-visible justify-center">
+              <div className="flex flex-row lg:flex-col gap-2 lg:gap-10 w-full lg:w-[30%] overflow-x-auto lg:overflow-visible justify-center">
                 {productDetails.products.map((product) => (
-                  <div
+                    <div
                     key={product.id}
                     className={`cursor-pointer border ${
                       selectedProduct.id === product.id
-                        ? "border-[#e4dcc7]"
-                        : "border-transparent"
-                    } p-1 rounded-md transition-transform duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg dark:hover:shadow-[#e4dcc7]/[0.2]`}
+                      ? "border-[#e4dcc7]"
+                      : "border-transparent"
+                    } p-1 rounded-md transition-transform duration-300 ease-in-out transform lg:hover:scale-110 lg:hover:shadow-lg lg:dark:hover:shadow-[#e4dcc7]/[0.2] flex justify-center items-center`}
                     onMouseEnter={() => setSelectedProduct(product)}
-                  >
+                    >
                     <Image
                       src={product.thumbnail}
-                      height={50}
-                      width={120}
+                      height={100}
+                      width={100}
                       alt={product.name}
-                      className="w-30 lg:w-30 h-30 rounded-md object-cover"
+                      className="lg:w-24 lg:h-24 rounded-md object-cover w-16 h-16"
                     />
-                  </div>
+                    </div>
                 ))}
               </div>
 
@@ -163,7 +163,7 @@ const ThreeDCardDemo: React.FC = () => {
                       className="flex justify-center items-center flex-grow w-[100%]"
                     >
                       <Image
-                        src={selectedProduct.thumbnail}
+                        src={selectedProduct.secondaryImage}
                         height={500}
                         width={500}
                         className="h-full w-full object-contain rounded-xl mx-auto"
