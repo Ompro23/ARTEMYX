@@ -87,7 +87,7 @@ const TermsAndConditions: React.FC = () => {
                 {/** Contact Us Section **/}
                 <section>
                     <h2 className="text-2xl font-semibold mb-2">10. Contact Us</h2>
-                    <p>For questions about these Terms, please contact us through the "Contact Us" page or via email.</p>
+                    <p>For questions about these Terms, please contact us through the &quot;Contact Us&quot; page or via email.</p>
                 </section>
             </motion.div>
         </div>
