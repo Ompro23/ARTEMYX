@@ -19,7 +19,7 @@ const ThreeDCardDemo: React.FC = () => {
   useEffect(() => {
     const fetchVisitorCount = async () => {
       try {
-        const response = await fetch("/api/visitor-count/DMK300", {
+        const response = await fetch("/api/visitor-count/RIM689", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -66,7 +66,7 @@ const ThreeDCardDemo: React.FC = () => {
                   translateZ="50"
                   className="text-xl font-bold text-neutral-600 dark:text-[#e4dcc7]"
                 >
-                  Damak Sharma
+                  Rimpi Borpatragohain
                 </CardItem>
                 <CardItem translateZ="100" className="w-full mt-4">
                   <Image
