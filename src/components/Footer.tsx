@@ -45,7 +45,7 @@ function Footer() {
     };
 
     return (
-        <footer className='bg-black text-gray-400 py-32 dark:bg-black dark:bg-grid-[#e4dcc7]/[0.09]'>
+        <footer className='bg-black text-gray-400 py-10 dark:bg-black dark:bg-grid-[#e4dcc7]/[0.09]'>
             <div className='max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-40 px-4 sm:px-6 lg:px-8'>
                 <div className='p-4 order-1 lg:order-1'>
                     <h3 className="text-[#e4dcc7] mb-4 text-center lg:text-left text-2xl font-semibold">Join the Waitlist</h3>
@@ -84,6 +84,7 @@ function Footer() {
                             <li><a href='/shop' className='hover:text-[#e4dcc7]'>Shop</a></li>
                             <li><a href='/about' className='hover:text-[#e4dcc7]'>About</a></li>
                             <li><a href='/privacypolicy' className='hover:text-[#e4dcc7]'>Privacy Policy</a></li>
+                            <li><a href='/returnpolicy' className='hover:text-[#e4dcc7]'>Return Policy</a></li>
                             <li><a href='/t&c' className='hover:text-[#e4dcc7]'>Terms of Service</a></li>
                             {/* <li><a href='https://example.com/blog' className='hover:text-white'>Blog</a></li> */}
                         </ul>
