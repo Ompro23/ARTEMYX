@@ -126,7 +126,7 @@ const ThreeDCardDemo: React.FC = () => {
           <div className="bg-gray-50 md:relative group/card dark:bg-[black] dark:hover:shadow-2xl dark:hover:shadow-[#e4dcc7]/[0.1] w-auto lg:w-[50vw] lg:h-[50] mb-20 rounded-xl p-4 lg:p-12 border lg:mx-auto m-3">
             <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-10 w-full justify-center">
               {/* Thumbnails */}
-              <div className="flex flex-row lg:flex-col gap-2 lg:gap-10 w-full lg:w-[30%] overflow-x-auto lg:overflow-visible justify-center">
+              <div className="flex flex-row lg:flex-col gap-2 lg:gap-10 w-full lg:w-[20%] overflow-x-auto lg:overflow-visible justify-center">
                 {productDetails.products.map((product) => (
                     <div
                     key={product.id}
@@ -142,7 +142,8 @@ const ThreeDCardDemo: React.FC = () => {
                       height={100}
                       width={100}
                       alt={product.name}
-                      className="lg:w-24 lg:h-24 rounded-md object-cover w-16 h-16"
+                      // className="lg:w-24 lg:h-24 rounded-md object-cover w-16 h-16" for large side images
+                      className="lg:w-20 lg:h-20 rounded-md object-cover w-16 h-16"
                     />
                     </div>
                 ))}
