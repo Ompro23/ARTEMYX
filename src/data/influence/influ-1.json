@@ -7,7 +7,8 @@
             "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
             "thumbnail": "/silhouette/png/sweatshirt.png",
             "buylink": "https://artemyx.dm2buy.com/product/73cdddb207bb6e695d66907794a3ac40",
-            "secondaryImage": "/frontBack/1.png"
+            "secondaryImage": "/frontBack/1.png",
+            "price" : 1500
         },
         {
             "id": 2,
@@ -16,7 +17,8 @@
             "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
             "thumbnail": "/silhouette/png/crewneck.png",
             "buylink": "https://artemyx.dm2buy.com/product/29696b875bf2474d1e3bed2c5d2e1efb",
-            "secondaryImage": "/frontBack/2.png"
+            "secondaryImage": "/frontBack/2.png",
+            "price" : 1000
         },
         {
             "id": 3,
@@ -25,7 +27,8 @@
             "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
             "thumbnail": "/silhouette/png/hoodie.png",
             "buylink": "https://artemyx.dm2buy.com/product/599e9fab6e3d95bc07cc2bfba54f79d9",
-            "secondaryImage": "/frontBack/3.png"
+            "secondaryImage": "/frontBack/3.png",
+            "price" : 1750
         },
         {
             "id": 4,
@@ -34,7 +37,8 @@
             "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
             "thumbnail": "/silhouette/png/crop-top-1.png",
             "buylink": "https://artemyx.dm2buy.com/product/81b8a8652a3847cf2c25c982273d7f7e",
-            "secondaryImage": "/frontBack/4.png"
+            "secondaryImage": "/frontBack/4.png",
+            "price" : 1000
         },
         {
             "id": 5,
@@ -43,7 +47,8 @@
             "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
             "thumbnail": "/silhouette/png/ov.png",
             "buylink": "https://artemyx.dm2buy.com/product/8af6fc322001602753b7f2facf99636b",
-            "secondaryImage": "/frontBack/5.png"
+            "secondaryImage": "/frontBack/5.png",
+            "price" : 1249
         }
     ]
 }

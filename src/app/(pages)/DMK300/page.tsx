@@ -171,12 +171,20 @@ const ThreeDCardDemo: React.FC = () => {
                         alt="Product Thumbnail"
                       />
                     </CardItem>
+                    
                     <CardItem
                       as="p"
                       translateZ="60"
                       className="text-neutral-500 text-xs lg:text-sm mt-2 dark:text-[#e4dcc7] text-center"
                     >
                       {selectedProduct.description}
+                    </CardItem>
+                    <CardItem
+                      as="p"
+                      translateZ="60"
+                      className="text-neutral-500 text-xs lg:text-sm mt-2 dark:text-[#e4dcc7] text-center justify-center"
+                    >
+                      Price : ₹{selectedProduct.price}
                     </CardItem>
                     <br />
                     <div className="flex justify-center mt-4">
