@@ -7,7 +7,7 @@ import { SparklesCore } from "@/components/ui/sparkles";
 import React, { useEffect, useState } from "react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { BackgroundLines } from "@/components/ui/background-lines";
-import productDetails from "@/data/influence/influ-1.json";
+import productDetails from "@/data/influence/RIM689.json";
 
 const ThreeDCardDemo: React.FC = () => {
   const [visitorCount, setVisitorCount] = useState<number | null>(null);
@@ -60,7 +60,7 @@ const ThreeDCardDemo: React.FC = () => {
 
           {/* 3D Card Section */}
           <BackgroundLines>
-            <CardContainer className="inter-var m-4 w-full lg:w-[60%] h-full flex justify-center">
+            <CardContainer className="inter-var m-4 w-full lg:w-[76%] h-full flex justify-center">
               <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-[#e4dcc7]/[0.4] dark:bg-[black] dark:border-[#e4dcc7]/[0.2] border-black/[0.1] w-full lg:w-1/2 h-full rounded-xl p-6 border">
                 <CardItem
                   translateZ="50"
@@ -84,17 +84,13 @@ const ThreeDCardDemo: React.FC = () => {
                     className="rounded-xl text-xs font-normal dark:text-[#e4dcc7]"
                   >
                     Hii my name is Rimpi Borpatragohain from north east india! 
-                    Why I decided to go with this design because among realities of life, a bit of magic only makes us shine brighter ✨
                   </CardItem>
                   <br />
                   <CardItem
                     translateZ={20}
                     className="rounded-xl text-xs font-normal dark:text-[#e4dcc7]"
                   >
-                    I chose Artemyx because the idea of creating something that
-                    can connect people to reality by AI was really different and
-                    special! I wanted to create something connecting to me, like
-                    my future home. My future goal will be <b>NYC</b>!
+                    I decided to go with this design because among realities of life, a bit of magic only makes us shine brighter ✨
                   </CardItem>
                   <CardItem
                     translateZ={20}

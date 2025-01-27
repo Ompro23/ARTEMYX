@@ -1,0 +1,54 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "NYC AR SweatShirt",
+            "description": "Show off your style with the NYC AR SweatShirt. Experience the magic of augmented reality and wear a piece of New York City.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/silhouette/png/sweatshirt.png",
+            "buylink": "https://artemyx.dm2buy.com/product/73cdddb207bb6e695d66907794a3ac40",
+            "secondaryImage": "/influensours/RIM689/rimpi-frontBack/7.png",
+            "price" : 1500
+        },
+        {
+            "id": 2,
+            "name": "NYC AR Crewneck",
+            "description": "Show off your style with the NYC AR Crewneck. Experience the magic of augmented reality and wear a piece of New York City.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/silhouette/png/crewneck.png",
+            "buylink": "https://artemyx.dm2buy.com/product/29696b875bf2474d1e3bed2c5d2e1efb",
+            "secondaryImage": "/influensours/RIM689/rimpi-frontBack/10.png",
+            "price" : 1000
+        },
+        {
+            "id": 3,
+            "name": "NYC AR Hoodie",
+            "description": "Show off your style with the NYC AR Hoodie. Experience the magic of augmented reality and wear a piece of New York City.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/silhouette/png/hoodie.png",
+            "buylink": "https://artemyx.dm2buy.com/product/599e9fab6e3d95bc07cc2bfba54f79d9",
+            "secondaryImage": "/influensours/RIM689/rimpi-frontBack/9.png",
+            "price" : 1750
+        },
+        {
+            "id": 4,
+            "name": "NYC AR Crop Top",
+            "description": "Show off your style with the NYC AR Crop Top. Experience the magic of augmented reality and wear a piece of New York City.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/silhouette/png/crop-top-1.png",
+            "buylink": "https://artemyx.dm2buy.com/product/81b8a8652a3847cf2c25c982273d7f7e",
+            "secondaryImage": "/influensours/RIM689/rimpi-frontBack/6.png",
+            "price" : 1000
+        },
+        {
+            "id": 5,
+            "name": "NYC AR Tee Oversized",
+            "description": "Show off your style with the NYC AR Oversized Tee. Experience the magic of augmented reality and wear a piece of New York City.",
+            "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
+            "thumbnail": "/silhouette/png/ov.png",
+            "buylink": "https://artemyx.dm2buy.com/product/8af6fc322001602753b7f2facf99636b",
+            "secondaryImage": "/influensours/RIM689/rimpi-frontBack/8.png",
+            "price" : 1249
+        }
+    ]
+}
