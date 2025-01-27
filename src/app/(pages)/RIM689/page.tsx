@@ -60,7 +60,7 @@ const ThreeDCardDemo: React.FC = () => {
 
           {/* 3D Card Section */}
           <BackgroundLines>
-            <CardContainer className="inter-var m-4 w-full lg:w-[60%] h-full flex justify-center">
+            <CardContainer className="inter-var m-4 w-full lg:w-[60] h-full flex justify-center">
               <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-[#e4dcc7]/[0.4] dark:bg-[black] dark:border-[#e4dcc7]/[0.2] border-black/[0.1] w-full lg:w-1/2 h-full rounded-xl p-6 border">
                 <CardItem
                   translateZ="50"
