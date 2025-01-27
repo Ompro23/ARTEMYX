@@ -83,7 +83,7 @@ const ThreeDCardDemo: React.FC = () => {
                     translateZ={20}
                     className="rounded-xl text-xs font-normal dark:text-[#e4dcc7]"
                   >
-                    Hii my name is Rimpi Borpatragohain from north east india! 
+                    Hii my name is Rimpi Borpatragohain from north east india!
                   </CardItem>
                   <br />
                   <CardItem
@@ -124,15 +124,14 @@ const ThreeDCardDemo: React.FC = () => {
               {/* Thumbnails */}
               <div className="flex flex-row lg:flex-col gap-2 lg:gap-10 w-full lg:w-[20%] overflow-x-auto lg:overflow-visible justify-center">
                 {productDetails.products.map((product) => (
-                    <div
+                  <div
                     key={product.id}
-                    className={`cursor-pointer border ${
-                      selectedProduct.id === product.id
-                      ? "border-[#e4dcc7]"
-                      : "border-transparent"
-                    } p-1 rounded-md transition-transform duration-300 ease-in-out transform lg:hover:scale-110 lg:hover:shadow-lg lg:dark:hover:shadow-[#e4dcc7]/[0.2] flex justify-center items-center`}
+                    className={`cursor-pointer border ${selectedProduct.id === product.id
+                        ? "border-[#e4dcc7]"
+                        : "border-transparent"
+                      } p-1 rounded-md transition-transform duration-300 ease-in-out transform lg:hover:scale-110 lg:hover:shadow-lg lg:dark:hover:shadow-[#e4dcc7]/[0.2] flex justify-center items-center`}
                     onMouseEnter={() => setSelectedProduct(product)}
-                    >
+                  >
                     <Image
                       src={product.thumbnail}
                       height={100}
@@ -141,14 +140,14 @@ const ThreeDCardDemo: React.FC = () => {
                       // className="lg:w-24 lg:h-24 rounded-md object-cover w-16 h-16" for large side images
                       className="lg:w-20 lg:h-20 rounded-md object-cover w-16 h-16"
                     />
-                    </div>
+                  </div>
                 ))}
               </div>
 
               {/* Main Product Card */}
-              <div className="flex items-center justify-center lg:w-[70%] w-full mt-4 lg:mt-0 dark:hover:shadow-[#e4dcc7]/[0.2]">
+              <div className="flex items-center justify-center lg:w-[70%] w-full mt-4 lg:mt-0  dark:hover:shadow-[#e4dcc7]/[0.2]">
                 <CardContainer className="w-full h-full dark:hover:shadow-[#e4dcc7]/[0.2]">
-                  <CardBody className="bg-gray-50 relative group/card dark:bg-[black] lg:dark:hover:shadow-2xl lg:dark:hover:shadow-[#e4dcc7]/[0.4] rounded-xl border p-4 lg:p-6 w-full h-full flex flex-col justify-center">
+                  <CardBody className="bg-gray-50 relative group/card dark:bg-[black] lg:dark:hover:shadow-2xl lg:dark:hover:shadow-[#e4dcc7]/[0.4] rounded-xl border p-4 lg:p-6 w-full h-[35rem] flex flex-col justify-center">
                     <CardItem
                       translateZ="50"
                       className="text-lg lg:text-xl font-bold text-neutral-600 dark:text-[#e4dcc7] text-center"
@@ -173,6 +172,13 @@ const ThreeDCardDemo: React.FC = () => {
                       className="text-neutral-500 text-xs lg:text-sm mt-2 dark:text-[#e4dcc7] text-center"
                     >
                       {selectedProduct.description}
+                    </CardItem>
+                    <CardItem
+                      as="p"
+                      translateZ="60"
+                      className="text-neutral-500 text-xs lg:text-sm mt-2 dark:text-[#e4dcc7] text-center justify-center"
+                    >
+                      Price : ₹{selectedProduct.price}
                     </CardItem>
                     <br />
                     <div className="flex justify-center mt-4">
