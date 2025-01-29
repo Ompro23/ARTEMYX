@@ -7,7 +7,7 @@ import { SparklesCore } from "@/components/ui/sparkles";
 import React, { useEffect, useState } from "react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { BackgroundLines } from "@/components/ui/background-lines";
-import productDetails from "@/data/influence/RIM689.json";
+import productDetails from "@/data/influence/SAL100.json";
 
 const ThreeDCardDemo: React.FC = () => {
   const [visitorCount, setVisitorCount] = useState<number | null>(null);
@@ -91,8 +91,9 @@ const ThreeDCardDemo: React.FC = () => {
                     translateZ={20}
                     className="rounded-xl text-xs font-normal dark:text-[#e4dcc7]"
                   >
+
                     {/* I decided to go with this design because among realities of life, a bit of magic only makes us shine brighter ✨ */}
-                    --
+                  --
                   </CardItem>
                   <CardItem
                     translateZ={20}
@@ -107,7 +108,7 @@ const ThreeDCardDemo: React.FC = () => {
           </BackgroundLines>
 
           {/* Product Display Section */}
-          {/* <div className="h-60 bg-transparent flex flex-col items-center justify-center rounded-md">
+          <div className="h-60 bg-transparent flex flex-col items-center justify-center rounded-md">
             <h1 className="md:text-7xl text-3xl lg:text-5xl font-bold text-center text-white relative">
               All Products
             </h1>
@@ -121,11 +122,11 @@ const ThreeDCardDemo: React.FC = () => {
                 particleColor="rgba(255, 255, 255, 0.8)"
               />
             </div>
-          </div> */}
-          <div className=" md:relative group/card  dark:hover:shadow-2xl dark:hover:shadow-[#e4dcc7]/[0.1] w-auto lg:w-[50vw] lg:h-[50] mb-20 rounded-xl p-4 lg:p-12  lg:mx-auto m-3">
+          </div>
+          <div className="bg-gray-50 md:relative group/card dark:bg-[black] dark:hover:shadow-2xl dark:hover:shadow-[#e4dcc7]/[0.1] w-auto lg:w-[50vw] lg:h-[50] mb-20 rounded-xl p-4 lg:p-12 border lg:mx-auto m-3">
             <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-10 w-full justify-center">
-              
-              {/* <div className="flex flex-row lg:flex-col gap-2 lg:gap-10 w-full lg:w-[20%] overflow-x-auto lg:overflow-visible justify-center">
+              {/* Thumbnails */}
+              <div className="flex flex-row lg:flex-col gap-2 lg:gap-10 w-full lg:w-[20%] overflow-x-auto lg:overflow-visible justify-center">
                 {productDetails.products.map((product) => (
                   <div
                     key={product.id}
@@ -145,11 +146,11 @@ const ThreeDCardDemo: React.FC = () => {
                     />
                   </div>
                 ))}
-              </div> */}
+              </div>
 
               {/* Main Product Card */}
               <div className="flex items-center justify-center lg:w-[70%] w-full mt-4 lg:mt-0  dark:hover:shadow-[#e4dcc7]/[0.2]">
-                {/* <CardContainer className="w-full h-full dark:hover:shadow-[#e4dcc7]/[0.2]">
+                <CardContainer className="w-full h-full dark:hover:shadow-[#e4dcc7]/[0.2]">
                   <CardBody className="bg-gray-50 relative group/card dark:bg-[black] lg:dark:hover:shadow-2xl lg:dark:hover:shadow-[#e4dcc7]/[0.4] rounded-xl border p-4 lg:p-6 w-full h-[35rem] flex flex-col justify-center">
                     <CardItem
                       translateZ="50"
@@ -196,7 +197,7 @@ const ThreeDCardDemo: React.FC = () => {
                       </CardItem>
                     </div>
                   </CardBody>
-                </CardContainer> */}
+                </CardContainer>
               </div>
             </div>
           </div>
