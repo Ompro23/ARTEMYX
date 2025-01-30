@@ -188,12 +188,21 @@ const ThreeDCardDemo: React.FC = () => {
                     </CardItem>
                     <br />
                     <div className="flex justify-center mt-4">
+                    <CardItem
+                        translateZ={20}
+                        as="a"
+                        href={"https://www.snapchat.com/lens/c08dc8d7266343b6ae974fe9f3958456?sender_web_id=b62393af-8499-4f8c-8231-b19ff9bb53c5&device_type=desktop&is_copy_url=true"}
+                        target="__blank"
+                        className="px-4 m-2 py-2 rounded-xl bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white] text-xs font-bold border border-[#e4dcc7]/[0.4]"
+                      >
+                        AR Lens
+                      </CardItem>
                       <CardItem
                         translateZ={20}
                         as="a"
                         href={selectedProduct.buylink}
                         target="__blank"
-                        className="px-4 py-2 rounded-xl bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white] text-xs font-bold border border-[#e4dcc7]/[0.4]"
+                        className="px-4 m-2 py-2 rounded-xl bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white] text-xs font-bold border border-[#e4dcc7]/[0.4]"
                       >
                         Buy Now
                       </CardItem>
