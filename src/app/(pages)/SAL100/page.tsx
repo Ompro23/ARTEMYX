@@ -19,7 +19,7 @@ const ThreeDCardDemo: React.FC = () => {
   useEffect(() => {
     const fetchVisitorCount = async () => {
       try {
-        const response = await fetch("/api/visitor-count/RIM689", {
+        const response = await fetch("/api/visitor-count/SAL100", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -60,7 +60,7 @@ const ThreeDCardDemo: React.FC = () => {
 
           {/* 3D Card Section */}
           <BackgroundLines>
-            <CardContainer className="inter-var m-4 w-full lg:w-[77%] md:w-[60] h-full flex justify-center">
+            <CardContainer className="inter-var m-4 w-full lg:w-[66%] md:w-[70] h-full flex justify-center">
               <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-[#e4dcc7]/[0.4] dark:bg-[black] dark:border-[#e4dcc7]/[0.2] border-black/[0.1] w-full lg:w-1/2 h-full rounded-xl p-6 border">
                 <CardItem
                   translateZ="50"
@@ -83,8 +83,8 @@ const ThreeDCardDemo: React.FC = () => {
                     translateZ={20}
                     className="rounded-xl text-xs font-normal dark:text-[#e4dcc7]"
                   >
-                    {/* Hii my name is Rimpi Borpatragohain from north east india! */}
-                    --
+                    Hey, I’m Saloni, a casual fashion lover and a believer in living authentically
+                    
                   </CardItem>
                   <br />
                   <CardItem
@@ -92,15 +92,14 @@ const ThreeDCardDemo: React.FC = () => {
                     className="rounded-xl text-xs font-normal dark:text-[#e4dcc7]"
                   >
 
-                    {/* I decided to go with this design because among realities of life, a bit of magic only makes us shine brighter ✨ */}
-                  --
+ARTEMYX’s AR-infused designs caught my attention because they push the boundaries of what fashion can be. The <b>Manifestation</b> tee is all about dreams and determination, which reflects my personal mantra.
+                  
                   </CardItem>
                   <CardItem
                     translateZ={20}
                     className="px-4 py-2 rounded-xl text-xs font-normal dark:text-[#e4dcc7] mt-2"
                   >
-                    Visitors: Null
-                    {/* {visitorCount !== null ? visitorCount : "Loading..."} */}
+                    Visitors: {visitorCount !== null ? visitorCount : "Loading..."}
                   </CardItem>
                 </div>
               </CardBody>

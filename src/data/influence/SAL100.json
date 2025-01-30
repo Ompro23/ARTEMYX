@@ -7,8 +7,8 @@
             "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
             "thumbnail": "/silhouette/png/sweatshirt.png",
             "buylink": "https://artemyx.dm2buy.com/product/ed24889e6c27e3636a485df3f8d1d155",
-            "secondaryImage": "/influensours/RIM689/rimpi-frontBack/7.png",
-            "price" : 0
+            "secondaryImage": "/influensours/SAL100/12.png",
+            "price" : 1500
         },
         {
             "id": 2,
@@ -17,8 +17,8 @@
             "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
             "thumbnail": "/silhouette/png/crewneck.png",
             "buylink": "https://artemyx.dm2buy.com/product/f6e8ec81986d7d68de204e5385a6b1d6",
-            "secondaryImage": "/influensours/RIM689/rimpi-frontBack/10.png",
-            "price" : 0
+            "secondaryImage": "/influensours/SAL100/13.png",
+            "price" : 1000
         },
         {
             "id": 3,
@@ -27,8 +27,8 @@
             "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
             "thumbnail": "/silhouette/png/hoodie.png",
             "buylink": "https://artemyx.dm2buy.com/product/14dce605c119374bf0b34b9decc63d54",
-            "secondaryImage": "/influensours/RIM689/rimpi-frontBack/9.png",
-            "price" : 0
+            "secondaryImage": "/influensours/SAL100/15.png",
+            "price" : 1750
         },
         {
             "id": 4,
@@ -37,8 +37,8 @@
             "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
             "thumbnail": "/silhouette/png/crop-top-1.png",
             "buylink": "https://artemyx.dm2buy.com/product/e1528eacfa9d2eae07bc24381aeedf52",
-            "secondaryImage": "/influensours/RIM689/rimpi-frontBack/6.png",
-            "price" : 0
+            "secondaryImage": "/influensours/SAL100/11.png",
+            "price" : 1000
         },
         {
             "id": 5,
@@ -47,8 +47,8 @@
             "link": "https://www.snapchat.com/lens/aa629bcaa06a4cc29f2f30138b83a47d?sender_web_id=d4deddca-f919-4835-95bd-1762fc309c78&device_type=desktop&is_copy_url=true",
             "thumbnail": "/silhouette/png/ov.png",
             "buylink": "https://artemyx.dm2buy.com/product/6e1efaca1fbbf25b3c13c3532053965f",
-            "secondaryImage": "/influensours/RIM689/rimpi-frontBack/8.png",
-            "price" : 0
+            "secondaryImage": "/influensours/SAL100/14.png",
+            "price" : 1249
         }
     ]
 }
