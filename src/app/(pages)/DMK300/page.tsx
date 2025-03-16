@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { BackgroundLines } from "@/components/ui/background-lines";
 import productDetails from "@/data/influence/influ-1.json";
+import Link from "next/link";
 
 const ThreeDCardDemo: React.FC = () => {
   const [visitorCount, setVisitorCount] = useState<number | null>(null);
@@ -193,19 +194,18 @@ const ThreeDCardDemo: React.FC = () => {
                         as="a"
                         href={"https://www.snapchat.com/lens/c08dc8d7266343b6ae974fe9f3958456?sender_web_id=b62393af-8499-4f8c-8231-b19ff9bb53c5&device_type=desktop&is_copy_url=true"}
                         target="__blank"
-                        className="px-4 m-2 py-2 rounded-xl bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white] text-xs font-bold border border-[#e4dcc7]/[0.4]"
+                        className="px-4 m-2 py-3 rounded-xl bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white] text-xs font-bold border border-[#e4dcc7]/[0.4]"
                       >
                         AR Lens
                       </CardItem>
                       <CardItem
-                        translateZ={20}
-                        as="a"
-                        href={selectedProduct.buylink}
-                        target="__blank"
-                        className="px-4 m-2 py-2 rounded-xl bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white] text-xs font-bold border border-[#e4dcc7]/[0.4]"
-                      >
-                        Buy Now
-                      </CardItem>
+                    translateZ={20}
+                    as={Link}
+                    href={`/checkout?productId=${selectedProduct.id}&source=influ-1`}
+                    className="px-4 py-3 m-2 rounded-xl bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white] text-xs font-bold border border-[#e4dcc7]/[0.4]"
+                  >
+                    Buy Now
+                  </CardItem>
                     </div>
                   </CardBody>
                 </CardContainer>

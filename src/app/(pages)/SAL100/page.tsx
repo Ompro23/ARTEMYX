@@ -8,6 +8,8 @@ import React, { useEffect, useState } from "react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { BackgroundLines } from "@/components/ui/background-lines";
 import productDetails from "@/data/influence/SAL100.json";
+import Link from "next/link";
+
 
 const ThreeDCardDemo: React.FC = () => {
   const [visitorCount, setVisitorCount] = useState<number | null>(null);
@@ -185,15 +187,14 @@ ARTEMYX’s AR-infused designs caught my attention because they push the boundar
                     </CardItem>
                     <br />
                     <div className="flex justify-center mt-4">
-                      <CardItem
-                        translateZ={20}
-                        as="a"
-                        href={selectedProduct.buylink}
-                        target="__blank"
-                        className="px-4 py-2 rounded-xl bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white] text-xs font-bold border border-[#e4dcc7]/[0.4]"
-                      >
-                        Buy Now
-                      </CardItem>
+                    <CardItem
+                    translateZ={20}
+                    as={Link}
+                    href={`/checkout?productId=${selectedProduct.id}&source=SAL100`}
+                    className="px-4 py-3 m-2 rounded-xl bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white] text-xs font-bold border border-[#e4dcc7]/[0.4]"
+                  >
+                    Buy Now
+                  </CardItem>
                     </div>
                   </CardBody>
                 </CardContainer>

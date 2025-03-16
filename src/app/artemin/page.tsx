@@ -1,0 +1,561 @@
+"use client";
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+interface Order {
+  _id: string;
+  productId: string;
+  quantity: number;
+  totalPrice: number;
+  email: string;
+  name: string;
+  phone: string;
+  address: string;
+  pincode: string;
+  city: string;
+  state: string;
+  country: string;
+  razorpay_payment_id?: string;
+  razorpay_order_id?: string;
+  razorpay_signature?: string;
+  productName: string; // Added productName
+  couponCode?: string; // Added coupon
+  size?: string;
+
+}
+
+interface Coupon {
+  _id: string;
+  name: string;
+  discountPer: string;
+  coupon: string;
+  size?: string;
+}
+
+const AdminPage: React.FC = () => {
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [coupons, setCoupons] = useState<Coupon[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [editingOrderId, setEditingOrderId] = useState<string | null>(null);
+  const [editedOrder, setEditedOrder] = useState<Order | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [activeTab, setActiveTab] = useState<'orders' | 'coupons'>('coupons');
+  const [newCoupon, setNewCoupon] = useState<Coupon>({ _id: '', name: '', discountPer: '', coupon: '', size: 'small' });
+  const [editingCouponId, setEditingCouponId] = useState<string | null>(null);
+  const [editedCoupon, setEditedCoupon] = useState<Coupon | null>({ _id: '', name: '', discountPer: '', coupon: '', size: 'small' });
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        // Verify this is a GET request
+        console.log("Fetching orders with GET request");
+        const response = await axios.get('/api/getOrders');
+        setOrders(response.data);
+      } catch (err: any) {
+        setError(err.message || 'Failed to fetch orders');
+      }
+    };
+
+    const fetchCoupons = async () => {
+      try {
+        // Verify this is a GET request
+        console.log("Fetching coupons with GET request");
+        const response = await axios.get('/api/getCoupons');
+        setCoupons(response.data);
+      } catch (err: any) {
+        setError(err.message || 'Failed to fetch coupons');
+      }
+    };
+
+    const fetchData = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        await Promise.all([fetchOrders(), fetchCoupons()]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleEdit = (order: Order) => {
+    setEditingOrderId(order._id);
+    setEditedOrder({ ...order });
+  };
+
+  const handleCancelEdit = () => {
+    setEditingOrderId(null);
+    setEditedOrder(null);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    if (editedOrder) {
+      setEditedOrder({ ...editedOrder, [name]: value });
+    }
+  };
+
+  const handleSave = async () => {
+    if (!editedOrder) return;
+
+    try {
+      const { _id, ...updateData } = editedOrder; // Exclude _id from the update payload
+      await axios.put(`/api/updateOrder/${_id}`, updateData);
+      // Update the orders state with the updated order
+      setOrders(orders.map(order => (order._id === _id ? editedOrder : order)));
+      setEditingOrderId(null);
+      setEditedOrder(null);
+    } catch (err: any) {
+      setError((err as any).message || 'Failed to update order');
+      console.error("Update order failed:", err); // Log the error for debugging
+    }
+  };
+
+  const handleAddCoupon = async () => {
+    try {
+      const response = await axios.post('/api/createCoupons', newCoupon); // Corrected endpoint
+      const newCouponWithId = response.data.coupon;
+      setCoupons([...coupons, newCouponWithId]);
+      setNewCoupon({ _id: '', name: '', discountPer: '', coupon: '', size: 'small' });
+    } catch (err: any) {
+      setError(err.message || 'Failed to add coupon');
+    }
+  };
+
+  const handleDeleteCoupon = async (id: string) => {
+    try {
+      console.log("Attempting to delete coupon with ID:", id);
+      
+      // Construct the DELETE URL
+      const deleteUrl = `/api/createCoupons/${id}`;
+      console.log("DELETE URL:", deleteUrl);
+      
+      // Make the DELETE request
+      const response = await axios.delete(deleteUrl);
+      console.log("DELETE response:", response);
+      
+      // Update the UI by removing the deleted coupon from state
+      setCoupons(prevCoupons => prevCoupons.filter(coupon => coupon._id !== id));
+      console.log("Coupon deleted successfully");
+    } catch (err: any) {
+      console.error("Error deleting coupon:", err);
+      if (err.response) {
+        console.error("Error response data:", err.response.data);
+        console.error("Error response status:", err.response.status);
+      }
+      setError(err.message || 'Failed to delete coupon');
+    }
+  };
+
+  const handleEditCoupon = (coupon: Coupon) => {
+    setEditingCouponId(coupon._id);
+    setEditedCoupon({ ...coupon });
+  };
+
+  const handleCancelEditCoupon = () => {
+    setEditingCouponId(null);
+    setEditedCoupon(null);
+  };
+
+  const handleInputChangeCoupon = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    if (editedCoupon) {
+      setEditedCoupon({ ...editedCoupon, [name]: value });
+    }
+  };
+
+  const handleSaveCoupon = async () => {
+    if (!editedCoupon) return;
+
+    try {
+      const { _id, ...updateData } = editedCoupon; // Exclude _id from the update payload
+      console.log("Updating coupon with ID:", _id);
+      console.log("Update data:", updateData);
+      
+      // Construct the PUT URL
+      const putUrl = `/api/createCoupons/${_id}`;
+      console.log("PUT URL:", putUrl);
+      
+      // Make the PUT request
+      const response = await axios.put(putUrl, updateData);
+      console.log("PUT response:", response);
+      
+      // Update the coupons state with the updated coupon
+      setCoupons(coupons.map(coupon => (coupon._id === _id ? editedCoupon : coupon)));
+      setEditingCouponId(null);
+      setEditedCoupon(null);
+    } catch (err: any) {
+      console.error("Update coupon failed:", err);
+      if (err.response) {
+        console.error("Error response data:", err.response.data);
+        console.error("Error response status:", err.response.status);
+      }
+      setError(err.message || 'Failed to update coupon');
+    }
+  };
+
+  const filteredOrders = orders.filter(order =>
+    Object.values(order).some(value =>
+      value?.toString().toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
+
+  const filteredCoupons = coupons.filter(coupon =>
+    Object.values(coupon).some(value =>
+      value.toString().toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  return (
+    <div className="min-h-screen bg-black py-12 pt-15 dark:bg-grid-[#e4dcc7]/[0.09]">
+      <h1 className="text-lg md:text-4xl lg:text-6xl text-center font-sans font-bold mb-4 text-[#e4dcc7]">Admin Page</h1>
+
+      <div className="flex justify-center mb-4">
+        <button
+          className={`px-2 md:px-4 py-1 md:py-2 rounded-xl ${activeTab === 'orders' ? 'bg-gray-50 dark:bg-[#141218] dark:text-[#e4dcc7] text-[black]' : 'bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white]'} text-xs font-bold border border-[#e4dcc7]/[0.4]`}
+          onClick={() => setActiveTab('orders')}
+        >
+          Orders
+        </button>
+        <div className='p-2'></div>
+        <button
+          className={`px-2 md:px-4 py-1 md:py-2 rounded-xl ${activeTab === 'coupons' ? 'bg-gray-50 dark:bg-[#141218] dark:text-[#e4dcc7] text-[black]' : 'bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white]'} text-xs font-bold border border-[#e4dcc7]/[0.4]`}
+          onClick={() => setActiveTab('coupons')}
+        >
+          Coupons
+        </button>
+      </div>
+
+      <div className="flex justify-center mb-4">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="px-2 md:px-4 py-1 md:py-2 rounded-xl bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 text-xs md:text-base"
+        />
+      </div>
+      <br />
+
+      <div className="overflow-x-auto px-10">
+        {activeTab === 'orders' ? (
+          <table className="min-w-full bg-gray-50 dark:bg-black dark:border-[#e4dcc7]/[0.4] border-black/[0.1] rounded-xl border-collapse text-xs md:text-sm">
+            <thead>
+              <tr className="text-xs">
+                <th className="px-2 py-1 border border-gray-300">Order ID</th>
+                <th className="px-2 py-1 border border-gray-300">Product ID</th>
+                <th className="px-2 py-1 border border-gray-300">ProductName</th>
+                <th className="px-2 py-1 border border-gray-300">Quantity</th>
+                <th className="px-2 py-1 border border-gray-300">Total Price</th>
+                <th className="px-2 py-1 border border-gray-300">Email</th>
+                <th className="px-2 py-1 border border-gray-300">Name</th>
+                <th className="px-2 py-1 border border-gray-300">Phone</th>
+                <th className="px-2 py-1 border border-gray-300">Address</th>
+                <th className="px-2 py-1 border border-gray-300">Pincode</th>
+                <th className="px-2 py-1 border border-gray-300">City</th>
+                <th className="px-2 py-1 border border-gray-300">State</th>
+                <th className="px-2 py-1 border border-gray-300">Country</th>
+                <th className="px-2 py-1 border border-gray-300">Coupon</th>
+                <th className="px-2 py-1 border border-gray-300">Size</th>
+                <th className="px-2 py-1 border border-gray-300">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredOrders.map(order => (
+                <tr key={order._id} className="text-center">
+                  {editingOrderId === order._id ? (
+                    <>
+                      <td className="px-1 py-1 border border-gray-300">{order._id}</td>
+                      <td className="px-1 py-1 border border-gray-300">
+                        <input
+                          type="text"
+                          name="productId"
+                          value={editedOrder?.productId || ''}
+                          onChange={handleInputChange}
+                          className="bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 rounded px-1 py-0.5 text-xs"
+                        />
+                      </td>
+                      <td className="px-1 py-1 border border-gray-300">
+                        <input
+                          type="text"
+                          name="productName"
+                          value={editedOrder?.productName || ''}
+                          onChange={handleInputChange}
+                          className="bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 rounded px-1 py-0.5 text-xs"
+                        />
+                      </td>
+                      <td className="px-1 py-1 border border-gray-300">
+                        <input
+                          type="number"
+                          name="quantity"
+                          value={editedOrder?.quantity || ''}
+                          onChange={handleInputChange}
+                          className="bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 rounded px-1 py-0.5 text-xs"
+                        />
+                      </td>
+                      <td className="px-1 py-1 border border-gray-300">
+                        <input
+                          type="number"
+                          name="totalPrice"
+                          value={editedOrder?.totalPrice || ''}
+                          onChange={handleInputChange}
+                          className="bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 rounded px-1 py-0.5 text-xs"
+                        />
+                      </td>
+                      <td className="px-1 py-1 border border-gray-300">
+                        <input
+                          type="email"
+                          name="email"
+                          value={editedOrder?.email || ''}
+                          onChange={handleInputChange}
+                          className="bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 rounded px-1 py-0.5 text-xs"
+                        />
+                      </td>
+                      <td className="px-1 py-1 border border-gray-300">
+                        <input
+                          type="text"
+                          name="name"
+                          value={editedOrder?.name || ''}
+                          onChange={handleInputChange}
+                          className="bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 rounded px-1 py-0.5 text-xs"
+                        />
+                      </td>
+                      <td className="px-1 py-1 border border-gray-300">
+                        <input
+                          type="text"
+                          name="phone"
+                          value={editedOrder?.phone || ''}
+                          onChange={handleInputChange}
+                          className="bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 rounded px-1 py-0.5 text-xs"
+                        />
+                      </td>
+                      <td className="px-1 py-1 border border-gray-300">
+                        <input
+                          type="text"
+                          name="address"
+                          value={editedOrder?.address || ''}
+                          onChange={handleInputChange}
+                          className="bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 rounded px-1 py-0.5 text-xs"
+                        />
+                      </td>
+                      <td className="px-1 py-1 border border-gray-300">
+                        <input
+                          type="text"
+                          name="pincode"
+                          value={editedOrder?.pincode || ''}
+                          onChange={handleInputChange}
+                          className="bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 rounded px-1 py-0.5 text-xs"
+                        />
+                      </td>
+                      <td className="px-1 py-1 border border-gray-300">
+                        <input
+                          type="text"
+                          name="city"
+                          value={editedOrder?.city || ''}
+                          onChange={handleInputChange}
+                          className="bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 rounded px-1 py-0.5 text-xs"
+                        />
+                      </td>
+                      <td className="px-1 py-1 border border-gray-300">
+                        <input
+                          type="text"
+                          name="state"
+                          value={editedOrder?.state || ''}
+                          onChange={handleInputChange}
+                          className="bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 rounded px-1 py-0.5 text-xs"
+                        />
+                      </td>
+                      <td className="px-1 py-1 border border-gray-300">
+                        <input
+                          type="text"
+                          name="country"
+                          value={editedOrder?.country || ''}
+                          onChange={handleInputChange}
+                          className="bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 rounded px-1 py-0.5 text-xs"
+                        />
+                      </td>
+                       <td className="px-1 py-1 border border-gray-300">
+                        <input
+                          type="text"
+                          name="coupon"
+                          value={editedOrder?.couponCode || ''}
+                          onChange={handleInputChange}
+                          className="bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 rounded px-1 py-0.5 text-xs"
+                        />
+                      </td>
+                      <td className="px-1 py-1 border border-gray-300">
+                         <input
+                          type="text"
+                          name="size"
+                          value={editedOrder?.size || ''}
+                          onChange={handleInputChange}
+                          className="bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 rounded px-1 py-0.5 text-xs"
+                        />
+                      </td>
+                      <td className="px-1 py-1 border border-gray-300">
+                        <button onClick={handleSave} className="px-2 py-1 rounded-xl bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white] text-xs font-bold border border-[#e4dcc7]/[0.4]">Save</button>
+                      <button onClick={handleCancelEdit} className="px-2 py-1 rounded-xl bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white] text-xs font-bold border border-[#e4dcc7]/[0.4]">Cancel</button>
+                      </td>
+                    </>
+                  ) : (
+                    <>
+                      <td className="px-1 py-1 border border-gray-300">{order._id}</td>
+                      <td className="px-1 py-1 border border-gray-300">{order.productId}</td>
+                      <td className="px-1 py-1 border border-gray-300">{order.productName}</td>
+                      <td className="px-1 py-1 border border-gray-300">{order.quantity}</td>
+                      <td className="px-1 py-1 border border-gray-300">{order.totalPrice}</td>
+                      <td className="px-1 py-1 border border-gray-300">{order.email}</td>
+                      <td className="px-1 py-1 border border-gray-300">{order.name}</td>
+                      <td className="px-1 py-1 border border-gray-300">{order.phone}</td>
+                      <td className="px-1 py-1 border border-gray-300">{order.address}</td>
+                      <td className="px-1 py-1 border border-gray-300">{order.pincode}</td>
+                      <td className="px-1 py-1 border border-gray-300">{order.city}</td>
+                      <td className="px-1 py-1 border border-gray-300">{order.state}</td>
+                      <td className="px-1 py-1 border border-gray-300">{order.country}</td>
+                      <td className="px-1 py-1 border border-gray-300">{order.couponCode}</td>
+                      <td className="px-1 py-1 border border-gray-300">{order.size}</td>
+                      <td className="px-1 py-1 border border-gray-300">
+                        <button onClick={() => handleEdit(order)} className="px-2 py-1 rounded-xl bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white] text-xs font-bold border border-[#e4dcc7]/[0.4]">Edit</button>
+                      </td>
+                    </>
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <div className="overflow-x-auto lg:px-20">
+            <table className="min-w-full bg-gray-50 dark:bg-black dark:border-[#e4dcc7]/[0.4] border-black/[0.1] rounded-xl border-collapse text-xs md:text-sm">
+              <thead>
+                <tr>
+                  <th className="px-2 py-1 border border-gray-300">Coupon ID</th>
+                  <th className="px-2 py-1 border border-gray-300">Name</th>
+                  <th className="px-2 py-1 border border-gray-300">Discount</th>
+                  <th className="px-2 py-1 border border-gray-300">Code</th>
+                  {/* <th className="px-2 py-1 border border-gray-300">Size</th> */}
+                  <th className="px-2 py-1 border border-gray-300">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredCoupons.map(coupon => (
+                  <tr key={coupon._id} className="text-center">
+                    {editingCouponId === coupon._id ? (
+                      <>
+                        <td className="px-1 py-1 border border-gray-300">{coupon._id}</td>
+                        <td className="px-1 py-1 border border-gray-300">
+                          <input
+                            type="text"
+                            name="name"
+                            value={editedCoupon?.name || ''}
+                            onChange={handleInputChangeCoupon}
+                            className="bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 rounded px-1 py-0.5 text-xs"
+                          />
+                        </td>
+                        <td className="px-1 py-1 border border-gray-300">
+                          <input
+                            type="text"
+                            name="discountPer"
+                            value={editedCoupon?.discountPer || ''}
+                            onChange={handleInputChangeCoupon}
+                            className="bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 rounded px-1 py-0.5 text-xs"
+                          />
+                        </td>
+                        <td className="px-1 py-1 border border-gray-300">
+                          <input
+                            type="text"
+                            name="coupon"
+                            value={editedCoupon?.coupon || ''}
+                            onChange={handleInputChangeCoupon}
+                            className="bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 rounded px-1 py-0.5 text-xs"
+                          />
+                        </td>
+                        {/* <td className="px-1 py-1 border border-gray-300">
+                          <select
+                            name="size"
+                            value={editedCoupon?.size || 'small'}
+                            onChange={handleInputChangeCoupon}
+                            className="px-2 py-1 rounded-xl bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 text-xs"
+                          >
+                            <option value="small">Small</option>
+                            <option value="medium">Medium</option>
+                            <option value="large">Large</option>
+                            <option value="extra large">Extra Large</option>
+                          </select>
+                        </td> */}
+                        <td className="px-1 py-1 border border-gray-300">
+                          <button onClick={handleSaveCoupon} className="px-2 py-1 rounded-xl bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white] text-xs font-bold border border-[#e4dcc7]/[0.4]">Save</button>
+                          <button onClick={handleCancelEditCoupon} className="px-2 py-1 rounded-xl bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white] text-xs font-bold border border-[#e4dcc7]/[0.4]">Cancel</button>
+                        </td>
+                      </>
+                    ) : (
+                      <>
+                        <td className="px-1 py-1 border border-gray-300">{coupon._id}</td>
+                        <td className="px-1 py-1 border border-gray-300">{coupon.name}</td>
+                        <td className="px-1 py-1 border border-gray-300">{coupon.discountPer}</td>
+                        <td className="px-1 py-1 border border-gray-300">{coupon.coupon}</td>
+                        {/* <td className="px-1 py-1 border border-gray-300">{coupon.size}</td> */}
+                        <td className="px-1 py-1 border border-gray-300">
+                          <button onClick={() => handleEditCoupon(coupon)} className="px-2 py-1 rounded-xl bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white] text-xs font-bold border border-[#e4dcc7]/[0.4]">Edit</button>
+                          <button onClick={() => handleDeleteCoupon(coupon._id)} className="px-2 py-1 rounded-xl bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white] text-xs font-bold border border-[#e4dcc7]/[0.4]">Delete</button>
+                        </td>
+                      </>
+                    )}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+      {activeTab === 'coupons' && (
+        <div className="mt-4 justify-center flex flex-col items-center">
+          <br />
+          <h2 className="text-base md:text-lg font-bold mb-2 text-[#e4dcc7]">Add New Coupon</h2>
+          
+          <input
+            type="text"
+            placeholder="Name"
+            value={newCoupon.name}
+            onChange={(e) => setNewCoupon({ ...newCoupon, name: e.target.value })}
+            className="px-2 md:px-4 py-1 md:py-2 rounded-xl bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 mb-2 text-xs"
+          />
+          <input
+            type="text"
+            placeholder="Discount"
+            value={newCoupon.discountPer}
+            onChange={(e) => setNewCoupon({ ...newCoupon, discountPer: e.target.value })}
+            className="px-2 md:px-4 py-1 md:py-2 rounded-xl bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 mb-2 text-xs"
+          />
+          <input
+            type="text"
+            placeholder="Code"
+            value={newCoupon.coupon}
+            onChange={(e) => setNewCoupon({ ...newCoupon, coupon: e.target.value })}
+            className="px-2 md:px-4 py-1 md:py-2 rounded-xl bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 mb-2 text-xs"
+          />
+          {/* <select
+            value={newCoupon.size}
+            onChange={(e) => setNewCoupon({ ...newCoupon, size: e.target.value })}
+            className="px-2 md:px-4 py-1 md:py-2 rounded-xl bg-gray-50 dark:bg-black dark:text-[#e4dcc7] border border-gray-300 mb-2 text-xs"
+          ></select>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+            <option value="extra large">Extra Large</option>
+          </select> */}
+          <button onClick={handleAddCoupon} className="px-2 md:px-4 py-1 md:py-2 rounded-xl bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white] text-xs font-bold border border-[#e4dcc7]/[0.4]">Add Coupon</button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default AdminPage;
