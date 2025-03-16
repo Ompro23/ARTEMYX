@@ -8,7 +8,7 @@ const PaymentGateway: React.FC = () => {
       currency: 'INR',
       name: 'Your Company Name',
       description: 'Test Transaction',
-      handler: function (response) {
+      handler: function (response: { razorpay_payment_id: any; }) {
         alert(response.razorpay_payment_id);
       },
       prefill: {
