@@ -23,7 +23,16 @@ export async function POST(req: NextRequest) {
         <p>Dear Customer,</p>
         <p>Your purchase was successful. Here are your order details:</p>
         <div style="border: 1px solid #ddd; padding: 10px;">
-          <pre>${JSON.stringify(orderDetails, null, 2)}</pre>
+          <p><strong>Product Name:</strong> ${orderDetails.productName}</p>
+          <p><strong>Product ID:</strong> ${orderDetails.productId}</p>
+          <p><strong>Quantity:</strong> ${orderDetails.quantity}</p>
+          <p><strong>Total Price:</strong> ${orderDetails.totalPrice}</p>
+          <p><strong>Name:</strong> ${orderDetails.name}</p>
+          <p><strong>Email:</strong> ${orderDetails.email}</p>
+          <p><strong>Phone:</strong> ${orderDetails.phone}</p>
+          <p><strong>Address:</strong> ${orderDetails.address}, ${orderDetails.city}, ${orderDetails.state}, ${orderDetails.country} - ${orderDetails.pincode}</p>
+          <p><strong>Size:</strong> ${orderDetails.size}</p>
+          <p><strong>Coupon Code:</strong> ${orderDetails.couponCode || 'N/A'}</p>
         </div>
         <p>We will email you the tracking ID once your product is dispatched.</p>
         <p>If you have any questions, please reply to this email.</p>
