@@ -118,23 +118,6 @@ const CheckoutPage: React.FC = () => {
     };
   }, []);
   
-  const handleInputChange = () => {
-    const email = (document.getElementById("email") as HTMLInputElement).value;
-    const name = (document.getElementById("name") as HTMLInputElement).value;
-    const phone = (document.getElementById("phone") as HTMLInputElement).value;
-    const address = (document.getElementById("address") as HTMLInputElement).value;
-    const pincode = (document.getElementById("pincode") as HTMLInputElement).value;
-    const city = (document.getElementById("city") as HTMLInputElement).value;
-    const state = (document.getElementById("state") as HTMLInputElement).value;
-    const country = (document.getElementById("country") as HTMLInputElement).value;
-
-    if (email && name && phone && address && pincode && city && state && country && size) {
-      setFormValid(true);
-    } else {
-      setFormValid(false);
-    }
-  };
-
   const handleSuccess = async () => {
     const email = (document.getElementById("email") as HTMLInputElement).value;
     const name = (document.getElementById("name") as HTMLInputElement).value;
@@ -144,9 +127,42 @@ const CheckoutPage: React.FC = () => {
     const city = (document.getElementById("city") as HTMLInputElement).value;
     const state = (document.getElementById("state") as HTMLInputElement).value;
     const country = (document.getElementById("country") as HTMLInputElement).value;
+    const size = (document.getElementById("size") as HTMLInputElement).value;
 
-    if (!email || !name || !phone || !address || !pincode || !city || !state || !country) {
-      alert("Please fill all the required fields.");
+    if (!name) {
+      alert("Please enter your Name.");
+      return;
+    }
+    if (!email) {
+      alert("Please enter your Email.");
+      return;
+    }
+    if (!phone) {
+      alert("Please enter your Phone Number.");
+      return;
+    }
+    if (!address) {
+      alert("Please enter your Shipping Address.");
+      return;
+    }
+    if (!pincode) {
+      alert("Please enter your Pincode.");
+      return;
+    }
+    if (!city) {
+      alert("Please enter your City.");
+      return;
+    }
+    if (!state) {
+      alert("Please enter your State.");
+      return;
+    }
+    if (!country) {
+      alert("Please enter your Country.");
+      return;
+    }
+     if (!size) {
+      alert("Please select a Size.");
       return;
     }
 
@@ -296,7 +312,7 @@ const CheckoutPage: React.FC = () => {
                 id="name"
                 type="text"
                 placeholder="Your Name"
-                onChange={handleInputChange}
+                
               />
             </div>
             <div className="mb-4">
@@ -308,7 +324,7 @@ const CheckoutPage: React.FC = () => {
                 id="email"
                 type="email"
                 placeholder="Your Email"
-                onChange={handleInputChange}
+                
               />
             </div>
             <div className="mb-4">
@@ -320,7 +336,7 @@ const CheckoutPage: React.FC = () => {
                 id="phone"
                 type="text"
                 placeholder="Your Phone Number"
-                onChange={handleInputChange}
+                
               />
             </div>
             <div className="mb-4">
@@ -332,7 +348,7 @@ const CheckoutPage: React.FC = () => {
                 id="address"
                 type="text"
                 placeholder="Address with Landmark"
-                onChange={handleInputChange}
+                
               />
             </div>
             <div className="mb-4">
@@ -344,7 +360,7 @@ const CheckoutPage: React.FC = () => {
                 id="pincode"
                 type="text"
                 placeholder="Pincode"
-                onChange={handleInputChange}
+                
               />
             </div>
             <div className="mb-4">
@@ -356,7 +372,7 @@ const CheckoutPage: React.FC = () => {
                 id="city"
                 type="text"
                 placeholder="City"
-                onChange={handleInputChange}
+                
               />
             </div>
             <div className="mb-4">
@@ -368,7 +384,7 @@ const CheckoutPage: React.FC = () => {
                 id="state"
                 type="text"
                 placeholder="State"
-                onChange={handleInputChange}
+                
               />
             </div>
             <div className="mb-4">
@@ -381,7 +397,7 @@ const CheckoutPage: React.FC = () => {
                 type="text"
                 placeholder="Country"
                 defaultValue="India"
-                onChange={handleInputChange}
+                
               />
             </div>
             <div className="mb-4">
@@ -395,8 +411,10 @@ const CheckoutPage: React.FC = () => {
                 min="1"
                 value={quantity}
                 onChange={(e) => {
-                  setQuantity(parseInt(e.target.value));
-                  handleInputChange();
+                  const value = e.target.value;
+                  const parsedQuantity = value === "" ? 1 : parseInt(value);
+                  setQuantity(parsedQuantity);
+                  
                 }}
               />
             </div>
@@ -410,7 +428,7 @@ const CheckoutPage: React.FC = () => {
                 value={size}
                 onChange={(e) => {
                   setSize(e.target.value);
-                  handleInputChange();
+                  
                 }}
               >
                 <option value="">Select Size</option>
@@ -432,7 +450,7 @@ const CheckoutPage: React.FC = () => {
                 value={couponCode}
                 onChange={(e) => {
                   setCouponCode(e.target.value);
-                  handleInputChange();
+                  
                 }}
               />
             </div>
@@ -456,7 +474,7 @@ const CheckoutPage: React.FC = () => {
                 type="button"
                 className="px-4 py-2 rounded-xl bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white] text-xs font-bold border border-[#e4dcc7]/[0.4]"
                 onClick={handleSuccess}
-                disabled={!formValid}
+                
               >
                 Pay Now
               </button>
