@@ -67,6 +67,25 @@ const AdminPage: React.FC = () => {
     refreshData();
   }, []);
 
+  useEffect(() => {
+    const fetchOrdersAndCoupons = async () => {
+      try {
+        const ordersResponse = await axios.get('/api/getOrders');
+        setOrders(ordersResponse.data);
+
+        const couponsResponse = await axios.get('/api/getCoupons');
+        setCoupons(couponsResponse.data);
+      } catch (error) {
+        console.error('Error fetching orders and coupons:', error);
+      }
+    };
+
+    fetchOrdersAndCoupons();
+    const intervalId = setInterval(fetchOrdersAndCoupons, 1000); // Fetch every 30 seconds
+
+    return () => clearInterval(intervalId); // Clear interval on unmount
+  }, []);
+
   const handleEdit = (order: Order) => {
     setEditingOrderId(order._id);
     setEditedOrder({ ...order });

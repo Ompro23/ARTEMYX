@@ -123,6 +123,22 @@ const CheckoutPage: React.FC = () => {
       document.body.removeChild(script);
     };
   }, []);
+
+  useEffect(() => {
+    const fetchProductDetails = async () => {
+      try {
+        const response = await axios.get('/api/getProductDetails', { params: { productId } });
+        setProduct(response.data);
+      } catch (error) {
+        console.error('Error fetching product details:', error);
+      }
+    };
+
+    fetchProductDetails();
+    const intervalId = setInterval(fetchProductDetails, 1000); // Fetch every 30 seconds
+
+    return () => clearInterval(intervalId); // Clear interval on unmount
+  }, [productId]);
   
   const handleSuccess = async () => {
     const email = (document.getElementById("email") as HTMLInputElement).value;
