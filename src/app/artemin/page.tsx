@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import apiClient from '@/lib/api-config';
 
 interface Order {
   _id: string;
@@ -51,12 +52,16 @@ const AdminPage: React.FC = () => {
     setLoading(true);
     setError(null);
     try {
-      const ordersResponse = await axios.get('/api/getOrders');
+      const [ordersResponse, couponsResponse] = await Promise.all([
+        apiClient.get('/api/getOrders'),
+        apiClient.get('/api/getCoupons')
+      ]);
+      
       setOrders(ordersResponse.data);
-
-      const couponsResponse = await axios.get('/api/getCoupons');
       setCoupons(couponsResponse.data);
+      console.log("Refreshed data - orders:", ordersResponse.data.length, "coupons:", couponsResponse.data.length);
     } catch (err: any) {
+      console.error("Error refreshing data:", err);
       setError(err.message || 'Failed to fetch data');
     } finally {
       setLoading(false);
@@ -65,25 +70,13 @@ const AdminPage: React.FC = () => {
 
   useEffect(() => {
     refreshData();
-  }, []);
-
-  useEffect(() => {
-    const fetchOrdersAndCoupons = async () => {
-      try {
-        const ordersResponse = await axios.get('/api/getOrders');
-        setOrders(ordersResponse.data);
-
-        const couponsResponse = await axios.get('/api/getCoupons');
-        setCoupons(couponsResponse.data);
-      } catch (error) {
-        console.error('Error fetching orders and coupons:', error);
-      }
-    };
-
-    fetchOrdersAndCoupons();
-    const intervalId = setInterval(fetchOrdersAndCoupons, 1000); // Fetch every 30 seconds
-
-    return () => clearInterval(intervalId); // Clear interval on unmount
+    
+    // Set up polling for real-time updates
+    const intervalId = setInterval(() => {
+      refreshData();
+    }, 5000); // Poll every 5 seconds for faster updates
+    
+    return () => clearInterval(intervalId);
   }, []);
 
   const handleEdit = (order: Order) => {
@@ -120,11 +113,16 @@ const AdminPage: React.FC = () => {
 
   const handleAddCoupon = async () => {
     try {
+      setLoading(true);
       console.log("Attempting to add coupon:", newCoupon);
-      const response = await axios.post('/api/createCoupons', newCoupon); // Corrected endpoint
+      const response = await apiClient.post('/api/createCoupons', newCoupon);
+      console.log("Coupon added successfully:", response.data);
+      
+      // Immediately refresh data to show the new coupon
       await refreshData();
+      
+      // Reset form
       setNewCoupon({ _id: '', name: '', discountPer: '', coupon: '', size: 'small' });
-      console.log("Coupon added successfully:");
     } catch (err: any) {
       console.error("Error adding coupon:", err);
       if (err.response) {
@@ -132,23 +130,22 @@ const AdminPage: React.FC = () => {
         console.error("Error response status:", err.response.status);
       }
       setError(err.message || 'Failed to add coupon');
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleDeleteCoupon = async (id: string) => {
     try {
+      setLoading(true);
       console.log("Attempting to delete coupon with ID:", id);
       
-      // Construct the DELETE URL
       const deleteUrl = `/api/createCoupons/${id}`;
-      console.log("DELETE URL:", deleteUrl);
+      const response = await apiClient.delete(deleteUrl);
+      console.log("Coupon deleted successfully:", response.data);
       
-      // Make the DELETE request
-      const response = await axios.delete(deleteUrl);
-      console.log("DELETE response:", response);
-      
+      // Immediately refresh data to update the table
       await refreshData();
-      console.log("Coupon deleted successfully");
     } catch (err: any) {
       console.error("Error deleting coupon:", err);
       if (err.response) {
@@ -156,6 +153,8 @@ const AdminPage: React.FC = () => {
         console.error("Error response status:", err.response.status);
       }
       setError(err.message || 'Failed to delete coupon');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -180,22 +179,20 @@ const AdminPage: React.FC = () => {
     if (!editedCoupon) return;
 
     try {
-      const { _id, ...updateData } = editedCoupon; // Exclude _id from the update payload
+      setLoading(true);
+      const { _id, ...updateData } = editedCoupon;
       console.log("Updating coupon with ID:", _id);
-      console.log("Update data:", updateData);
       
-      // Construct the PUT URL
       const putUrl = `/api/createCoupons/${_id}`;
-      console.log("PUT URL:", putUrl);
+      const response = await apiClient.put(putUrl, updateData);
+      console.log("Coupon updated successfully:", response.data);
       
-      // Make the PUT request
-      const response = await axios.put(putUrl, updateData);
-      console.log("PUT response:", response);
-      
+      // Immediately refresh data
       await refreshData();
+      
+      // Reset state
       setEditingCouponId(null);
       setEditedCoupon(null);
-      console.log("Coupon updated successfully:", editedCoupon);
     } catch (err: any) {
       console.error("Update coupon failed:", err);
       if (err.response) {
@@ -203,6 +200,8 @@ const AdminPage: React.FC = () => {
         console.error("Error response status:", err.response.status);
       }
       setError(err.message || 'Failed to update coupon');
+    } finally {
+      setLoading(false);
     }
   };
 

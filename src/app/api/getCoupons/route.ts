@@ -1,35 +1,82 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { MongoClient } from 'mongodb';
+import { connectToDatabase } from '@/lib/mongodb';
 
-const uri = process.env.MONGODB_URI;
-if (!uri) {
-  throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
+// Force dynamic to prevent caching
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
+export const revalidate = 0;
+
+// Handle CORS preflight requests
+export async function OPTIONS() {
+  return NextResponse.json({}, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Max-Age': '86400',
+    },
+  });
 }
-
-let client: MongoClient;
-let clientPromise: Promise<MongoClient>;
-
-declare global {
-  var _mongoClientPromise: Promise<MongoClient> | undefined;
-}
-
-if (!global._mongoClientPromise) {
-  client = new MongoClient(uri);
-  global._mongoClientPromise = client.connect();
-}
-clientPromise = global._mongoClientPromise;
 
 export async function GET(req: NextRequest) {
+  console.log('GET /api/getCoupons request received');
+  
   try {
-    const client = await clientPromise;
-    const database = client.db('Products');
-    const coupons = database.collection('coupens');
-
-    const allCoupons = await coupons.find().toArray();
-
-    return NextResponse.json(allCoupons);
+    // Connect to the database
+    const { db } = await connectToDatabase();
+    
+    // Verify connection
+    if (!db) {
+      console.error('Database connection failed');
+      return NextResponse.json(
+        { error: 'Database connection failed' },
+        { status: 500 }
+      );
+    }
+    
+    // Check if collection exists - using 'coupens' instead of 'coupons'
+    const collections = await db.listCollections({ name: 'coupens' }).toArray();
+    if (collections.length === 0) {
+      console.log('Coupens collection does not exist, returning empty array');
+      return NextResponse.json([], {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          'Cache-Control': 'no-store, max-age=0',
+        },
+      });
+    }
+    
+    // Get coupons from 'coupens' collection
+    const coupons = await db.collection('coupens').find({}).toArray();
+    console.log(`Successfully retrieved ${coupons.length} coupons from 'coupens' collection`);
+    
+    return NextResponse.json(coupons, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Cache-Control': 'no-store, max-age=0',
+      },
+    });
   } catch (error) {
-    console.error('Error fetching coupons:', error);
-    return NextResponse.json({ error: 'Error fetching coupons' }, { status: 500 });
+    // Detailed error logging
+    console.error('Error in getCoupons:', error);
+    if (error instanceof Error) {
+      console.error('Error message:', error.message);
+      console.error('Error stack:', error.stack);
+    }
+    
+    return NextResponse.json(
+      { error: 'Failed to fetch coupons', details: error instanceof Error ? error.message : 'Unknown error' },
+      { 
+        status: 500,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Cache-Control': 'no-store, max-age=0',
+        }
+      }
+    );
   }
 }

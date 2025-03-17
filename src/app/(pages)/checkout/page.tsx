@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import Footer from "@/components/Footer";
 import axios from 'axios';
+import apiClient from '@/lib/api-config';
 
 declare global {
   interface Window {
@@ -78,15 +79,16 @@ const CheckoutPage: React.FC = () => {
   useEffect(() => {
     const fetchCoupons = async () => {
       try {
-        const response = await axios.get('/api/getCoupons');
+        const response = await apiClient.get('/api/getCoupons');
         setValidCoupons(response.data);
+        console.log("Fetched coupons:", response.data);
       } catch (error) {
         console.error('Error fetching coupons:', error);
       }
     };
 
     fetchCoupons();
-    const intervalId = setInterval(fetchCoupons, 30000); // Fetch every 30 seconds
+    const intervalId = setInterval(fetchCoupons, 10000); // Reduced to 10 seconds for faster updates
 
     return () => clearInterval(intervalId); // Clear interval on unmount
   }, []);
@@ -127,17 +129,20 @@ const CheckoutPage: React.FC = () => {
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
-        const response = await axios.get('/api/getProductDetails', { params: { productId } });
-        setProduct(response.data);
+        const response = await apiClient.get('/api/getProductDetails', { params: { productId } });
+        if (response.data) {
+          setProduct(response.data);
+        }
       } catch (error) {
         console.error('Error fetching product details:', error);
       }
     };
 
-    fetchProductDetails();
-    const intervalId = setInterval(fetchProductDetails, 1000); // Fetch every 30 seconds
-
-    return () => clearInterval(intervalId); // Clear interval on unmount
+    if (productId) {
+      fetchProductDetails();
+      const intervalId = setInterval(fetchProductDetails, 10000);
+      return () => clearInterval(intervalId);
+    }
   }, [productId]);
   
   const handleSuccess = async () => {
@@ -208,7 +213,7 @@ const CheckoutPage: React.FC = () => {
     try {
       console.log('Creating order with details:', orderDetails);
       // Create order before invoking Razorpay
-      const { data } = await axios.post('/api/createOrder', orderDetails);
+      const { data } = await apiClient.post('/api/createOrder', orderDetails);
       console.log('Order created:', data);
 
       const options = {
@@ -220,13 +225,13 @@ const CheckoutPage: React.FC = () => {
         order_id: data.id,
         handler: async (response: { razorpay_payment_id: any; razorpay_order_id: any; razorpay_signature: any; }) => {
           console.log('Payment successful:', response);
-          await axios.post('/api/saveOrder', {
+          await apiClient.post('/api/saveOrder', {
             ...orderDetails,
             razorpay_payment_id: response.razorpay_payment_id,
             razorpay_order_id: response.razorpay_order_id,
             razorpay_signature: response.razorpay_signature,
           });
-          await axios.post('/api/sendEmail', { email: orderDetails.email, orderDetails });
+          await apiClient.post('/api/sendEmail', { email: orderDetails.email, orderDetails });
         },
         prefill: {
           name: orderDetails.name,
