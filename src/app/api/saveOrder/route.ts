@@ -1,26 +1,67 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { MongoClient } from 'mongodb';
+import { connectToDatabase } from '@/lib/mongodb';
 
-const uri = process.env.MONGODB_URI;
-if (!uri) {
-  throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
+export const dynamic = 'force-dynamic';
+
+export async function OPTIONS() {
+  return NextResponse.json({}, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Max-Age': '86400',
+    },
+  });
 }
-const client = new MongoClient(uri);
 
 export async function POST(req: NextRequest) {
+  console.log('POST /api/saveOrder request received at:', new Date().toISOString());
+  
   try {
-    const orderDetails = await req.json();
-
-    await client.connect();
-    const database = client.db('Products');
-    const orders = database.collection('orders');
-    await orders.insertOne(orderDetails);
-
-    return NextResponse.json({ message: 'Order saved successfully' }, { status: 200 });
+    const orderData = await req.json();
+    console.log('Order data received:', JSON.stringify(orderData));
+    
+    // Add timestamp to the order
+    const orderWithTimestamp = {
+      ...orderData,
+      createdAt: new Date().toISOString(),
+    };
+    
+    const { db } = await connectToDatabase();
+    
+    // Check if collection exists, create if it doesn't
+    const collections = await db.listCollections({ name: 'orders' }).toArray();
+    if (collections.length === 0) {
+      console.log('Creating orders collection');
+      await db.createCollection('orders');
+    }
+    
+    // Insert the order
+    const result = await db.collection('orders').insertOne(orderWithTimestamp);
+    console.log('Order saved successfully with ID:', result.insertedId);
+    
+    return NextResponse.json({ success: true, orderId: result.insertedId }, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Cache-Control': 'no-store, max-age=0',
+      },
+    });
   } catch (error) {
     console.error('Error saving order:', error);
-    return NextResponse.json({ error: 'Error saving order' }, { status: 500 });
-  } finally {
-    await client.close();
+    
+    if (error instanceof Error) {
+      console.error('Error details:', error.message, error.stack);
+    }
+    
+    return NextResponse.json(
+      { success: false, error: 'Failed to save order', details: error instanceof Error ? error.message : 'Unknown error' },
+      { 
+        status: 500,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Cache-Control': 'no-store, max-age=0',
+        }
+      }
+    );
   }
 }

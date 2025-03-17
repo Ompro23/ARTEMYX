@@ -45,6 +45,8 @@ const CheckoutPage: React.FC = () => {
   const [discountedPrice, setDiscountedPrice] = useState(0);
   
   const [size, setSize] = useState("");
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [orderSaved, setOrderSaved] = useState(false);
 
   useEffect(() => {
     const fetchProductDetails = async () => {
@@ -146,6 +148,10 @@ const CheckoutPage: React.FC = () => {
   }, [productId]);
   
   const handleSuccess = async () => {
+    // Reset state
+    setIsProcessing(true);
+    setOrderSaved(false);
+  
     const email = (document.getElementById("email") as HTMLInputElement).value;
     const name = (document.getElementById("name") as HTMLInputElement).value;
     const phone = (document.getElementById("phone") as HTMLInputElement).value;
@@ -208,6 +214,7 @@ const CheckoutPage: React.FC = () => {
       country,
       size,
       couponCode, // Include the coupon code in the order details
+      orderDate: new Date().toISOString(), // Add timestamp
     };
 
     try {
@@ -225,36 +232,73 @@ const CheckoutPage: React.FC = () => {
         order_id: data.id,
         handler: async (response: { razorpay_payment_id: any; razorpay_order_id: any; razorpay_signature: any; }) => {
           console.log('Payment successful:', response);
-          await apiClient.post('/api/saveOrder', {
-            ...orderDetails,
-            razorpay_payment_id: response.razorpay_payment_id,
-            razorpay_order_id: response.razorpay_order_id,
-            razorpay_signature: response.razorpay_signature,
-          });
-          await apiClient.post('/api/sendEmail', { email: orderDetails.email, orderDetails });
+          
+          try {
+            // Save order with payment details
+            const saveResponse = await apiClient.post('/api/saveOrder', {
+              ...orderDetails,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_signature: response.razorpay_signature,
+              paymentStatus: 'completed',
+              paymentDate: new Date().toISOString(),
+            });
+            
+            console.log('Order saved:', saveResponse.data);
+            setOrderSaved(true);
+            
+            // Send confirmation email
+            await apiClient.post('/api/sendEmail', { 
+              email: orderDetails.email, 
+              orderDetails,
+              paymentInfo: {
+                paymentId: response.razorpay_payment_id,
+                orderId: response.razorpay_order_id
+              }
+            });
+            
+            // Show success alert and provide feedback
+            alert('Payment successful! Your order has been placed.');
+            
+            // Clear form or redirect
+            // You could add a redirect here if needed
+          } catch (saveError) {
+            console.error('Error saving order:', saveError);
+            alert('Payment was successful, but there was an issue saving your order. Please contact support with your payment ID: ' + response.razorpay_payment_id);
+          } finally {
+            setIsProcessing(false);
+          }
         },
-        prefill: {
-          name: orderDetails.name,
-          email: orderDetails.email,
-          contact: orderDetails.phone,
-        },
-        notes: {
-          address: orderDetails.address,
-        },
-        theme: {
-          color: "#3399cc",
-        },
+        // Handle modal closing
+        modal: {
+          ondismiss: function() {
+            console.log('Payment modal closed');
+            setIsProcessing(false);
+          }
+        }
       };
 
       console.log('Opening Razorpay with options:', options);
       if (window.Razorpay) {
         const rzp1 = new window.Razorpay(options);
+        
+        // Add error handler
+        rzp1.on('payment.failed', function(response: any) {
+          console.error('Payment failed:', response.error);
+          alert(`Payment failed: ${response.error.description}`);
+          setIsProcessing(false);
+        });
+        
         rzp1.open();
       } else {
         console.error('Razorpay script not loaded');
+        alert('Payment gateway is not available right now. Please try again later.');
+        setIsProcessing(false);
       }
     } catch (error) {
       console.error('Error creating order:', error);
+      alert('There was an error starting the payment process. Please try again.');
+      setIsProcessing(false);
     }
   };
 
@@ -499,11 +543,11 @@ const CheckoutPage: React.FC = () => {
             <div className="flex justify-end">
               <button
                 type="button"
-                className="px-4 py-2 rounded-xl bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white] text-xs font-bold border border-[#e4dcc7]/[0.4]"
+                className={`px-4 py-2 rounded-xl bg-black dark:bg-[#141218] dark:text-[#e4dcc7] text-[white] text-xs font-bold border border-[#e4dcc7]/[0.4] ${isProcessing ? 'opacity-50 cursor-not-allowed' : ''}`}
                 onClick={handleSuccess}
-                
+                disabled={isProcessing}
               >
-                Pay Now
+                {isProcessing ? 'Processing...' : 'Pay Now'}
               </button>
             </div>
           </form>

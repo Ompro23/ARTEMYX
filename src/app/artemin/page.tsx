@@ -47,21 +47,41 @@ const AdminPage: React.FC = () => {
   const [editingCouponId, setEditingCouponId] = useState<string | null>(null);
   const [editedCoupon, setEditedCoupon] = useState<Coupon | null>({ _id: '', name: '', discountPer: '', coupon: '', size: 'small' });
 
-  // Function to refresh orders and coupons
+  // Function to refresh orders and coupons with better error handling and status updates
   const refreshData = async () => {
     setLoading(true);
     setError(null);
     try {
-      const [ordersResponse, couponsResponse] = await Promise.all([
-        apiClient.get('/api/getOrders'),
-        apiClient.get('/api/getCoupons')
-      ]);
+      console.log("Refreshing data at:", new Date().toISOString());
       
-      setOrders(ordersResponse.data);
-      setCoupons(couponsResponse.data);
-      console.log("Refreshed data - orders:", ordersResponse.data.length, "coupons:", couponsResponse.data.length);
+      // Separate the requests to handle individual failures
+      try {
+        const ordersResponse = await apiClient.get('/api/getOrders', {
+          params: { _nocache: Date.now() } // Force fresh data
+        });
+        
+        if (ordersResponse.data) {
+          setOrders(ordersResponse.data);
+          console.log(`Retrieved ${ordersResponse.data.length} orders`);
+        }
+      } catch (orderErr) {
+        console.error("Error fetching orders:", orderErr);
+      }
+      
+      try {
+        const couponsResponse = await apiClient.get('/api/getCoupons', {
+          params: { _nocache: Date.now() } // Force fresh data
+        });
+        
+        if (couponsResponse.data) {
+          setCoupons(couponsResponse.data);
+          console.log(`Retrieved ${couponsResponse.data.length} coupons`);
+        }
+      } catch (couponErr) {
+        console.error("Error fetching coupons:", couponErr);
+      }
     } catch (err: any) {
-      console.error("Error refreshing data:", err);
+      console.error("General error refreshing data:", err);
       setError(err.message || 'Failed to fetch data');
     } finally {
       setLoading(false);
@@ -69,14 +89,24 @@ const AdminPage: React.FC = () => {
   };
 
   useEffect(() => {
+    // Initial data load
     refreshData();
     
-    // Set up polling for real-time updates
-    const intervalId = setInterval(() => {
-      refreshData();
-    }, 5000); // Poll every 5 seconds for faster updates
+    // Set up real-time polling with better interval management
+    const intervalId = setInterval(refreshData, 3000); // Poll every 3 seconds
     
-    return () => clearInterval(intervalId);
+    // Set up focus detection to refresh data when tab becomes active
+    const handleFocus = () => {
+      console.log("Window focused, refreshing data");
+      refreshData();
+    };
+    
+    window.addEventListener('focus', handleFocus);
+    
+    return () => {
+      clearInterval(intervalId);
+      window.removeEventListener('focus', handleFocus);
+    };
   }, []);
 
   const handleEdit = (order: Order) => {
