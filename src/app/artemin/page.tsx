@@ -46,40 +46,25 @@ const AdminPage: React.FC = () => {
   const [editingCouponId, setEditingCouponId] = useState<string | null>(null);
   const [editedCoupon, setEditedCoupon] = useState<Coupon | null>({ _id: '', name: '', discountPer: '', coupon: '', size: 'small' });
 
+  // Function to refresh orders and coupons
+  const refreshData = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const ordersResponse = await axios.get('/api/getOrders');
+      setOrders(ordersResponse.data);
+
+      const couponsResponse = await axios.get('/api/getCoupons');
+      setCoupons(couponsResponse.data);
+    } catch (err: any) {
+      setError(err.message || 'Failed to fetch data');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchOrders = async () => {
-      try {
-        // Verify this is a GET request
-        console.log("Fetching orders with GET request");
-        const response = await axios.get('/api/getOrders');
-        setOrders(response.data);
-      } catch (err: any) {
-        setError(err.message || 'Failed to fetch orders');
-      }
-    };
-
-    const fetchCoupons = async () => {
-      try {
-        // Verify this is a GET request
-        console.log("Fetching coupons with GET request");
-        const response = await axios.get('/api/getCoupons');
-        setCoupons(response.data);
-      } catch (err: any) {
-        setError(err.message || 'Failed to fetch coupons');
-      }
-    };
-
-    const fetchData = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        await Promise.all([fetchOrders(), fetchCoupons()]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
+    refreshData();
   }, []);
 
   const handleEdit = (order: Order) => {
@@ -105,8 +90,7 @@ const AdminPage: React.FC = () => {
     try {
       const { _id, ...updateData } = editedOrder; // Exclude _id from the update payload
       await axios.put(`/api/updateOrder/${_id}`, updateData);
-      // Update the orders state with the updated order
-      setOrders(orders.map(order => (order._id === _id ? editedOrder : order)));
+      await refreshData();
       setEditingOrderId(null);
       setEditedOrder(null);
     } catch (err: any) {
@@ -117,11 +101,18 @@ const AdminPage: React.FC = () => {
 
   const handleAddCoupon = async () => {
     try {
+      console.log("Attempting to add coupon:", newCoupon);
       const response = await axios.post('/api/createCoupons', newCoupon); // Corrected endpoint
       const newCouponWithId = response.data.coupon;
-      setCoupons([...coupons, newCouponWithId]);
       setNewCoupon({ _id: '', name: '', discountPer: '', coupon: '', size: 'small' });
+      await refreshData();
+      console.log("Coupon added successfully:", newCouponWithId);
     } catch (err: any) {
+      console.error("Error adding coupon:", err);
+      if (err.response) {
+        console.error("Error response data:", err.response.data);
+        console.error("Error response status:", err.response.status);
+      }
       setError(err.message || 'Failed to add coupon');
     }
   };
@@ -138,8 +129,7 @@ const AdminPage: React.FC = () => {
       const response = await axios.delete(deleteUrl);
       console.log("DELETE response:", response);
       
-      // Update the UI by removing the deleted coupon from state
-      setCoupons(prevCoupons => prevCoupons.filter(coupon => coupon._id !== id));
+      await refreshData();
       console.log("Coupon deleted successfully");
     } catch (err: any) {
       console.error("Error deleting coupon:", err);
@@ -184,10 +174,10 @@ const AdminPage: React.FC = () => {
       const response = await axios.put(putUrl, updateData);
       console.log("PUT response:", response);
       
-      // Update the coupons state with the updated coupon
-      setCoupons(coupons.map(coupon => (coupon._id === _id ? editedCoupon : coupon)));
+      await refreshData();
       setEditingCouponId(null);
       setEditedCoupon(null);
+      console.log("Coupon updated successfully:", editedCoupon);
     } catch (err: any) {
       console.error("Update coupon failed:", err);
       if (err.response) {
