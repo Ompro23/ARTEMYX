@@ -103,10 +103,9 @@ const AdminPage: React.FC = () => {
     try {
       console.log("Attempting to add coupon:", newCoupon);
       const response = await axios.post('/api/createCoupons', newCoupon); // Corrected endpoint
-      const newCouponWithId = response.data.coupon;
-      setNewCoupon({ _id: '', name: '', discountPer: '', coupon: '', size: 'small' });
       await refreshData();
-      console.log("Coupon added successfully:", newCouponWithId);
+      setNewCoupon({ _id: '', name: '', discountPer: '', coupon: '', size: 'small' });
+      console.log("Coupon added successfully:");
     } catch (err: any) {
       console.error("Error adding coupon:", err);
       if (err.response) {

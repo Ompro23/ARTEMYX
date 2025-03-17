@@ -63,6 +63,9 @@ const CheckoutPage: React.FC = () => {
     };
 
     fetchProductDetails();
+    const intervalId = setInterval(fetchProductDetails, 30000); // Fetch every 30 seconds
+
+    return () => clearInterval(intervalId); // Clear interval on unmount
   }, [dataSource]);
 
   useEffect(() => {
@@ -83,6 +86,9 @@ const CheckoutPage: React.FC = () => {
     };
 
     fetchCoupons();
+    const intervalId = setInterval(fetchCoupons, 30000); // Fetch every 30 seconds
+
+    return () => clearInterval(intervalId); // Clear interval on unmount
   }, []);
 
   useEffect(() => {
